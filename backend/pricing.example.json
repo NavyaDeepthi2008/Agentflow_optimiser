@@ -1,0 +1,14 @@
+{
+  "source": "REPLACE with the URL of the provider's official pricing page",
+  "retrieved_on": "REPLACE with the date you copied the prices (YYYY-MM-DD)",
+  "currency": "USD",
+  "models": {
+    "gemini-3.5-flash": {
+      "input_per_million": null,
+      "output_per_million": null,
+      "thinking_per_million": null,
+      "thinking_billed_as_output": null
+    }
+  },
+  "tool_per_execution": {}
+}

@@ -1,0 +1,258 @@
+[
+  {
+    "config_snapshot": {
+      "learned_rules_active": [],
+      "max_steps": 12,
+      "max_tool_requests": 20
+    },
+    "created_at": "2026-10-09T17:28:03.110334+00:00",
+    "ended_at": "2026-10-09T17:28:03.126671+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "Three Keystone units cost 3600 USD.",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "executed_live": 4
+      },
+      "duration_ms": 14.249975999973685,
+      "input_tokens": null,
+      "llm_calls": 5,
+      "llm_time_ms": 0.24454499998682877,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 0,
+      "steps": 5,
+      "thinking_tokens": null,
+      "tool_executions": 4,
+      "tool_requests": 4,
+      "tool_retries": 0,
+      "tool_time_ms": 5.059541000036916,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "passthrough",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+      "kind": "measured",
+      "phase": "warm",
+      "repetition": 1,
+      "task_id": "redundant_keystone_total"
+    },
+    "run_id": "bc958afac65f448f979f0e545e27c66d",
+    "session_id": "eval-40686a3a-36",
+    "started_at": "2026-10-09T17:28:03.111085+00:00",
+    "status": "success",
+    "task": "How much would 3 Keystone units cost in total, in USD?"
+  },
+  {
+    "config_snapshot": {
+      "learned_rules_active": [],
+      "max_steps": 12,
+      "max_tool_requests": 20
+    },
+    "created_at": "2026-10-09T17:28:03.091995+00:00",
+    "ended_at": "2026-10-09T17:28:03.107132+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "Three Keystone units cost 3600 USD.",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "executed_live": 4
+      },
+      "duration_ms": 12.957454999991569,
+      "input_tokens": null,
+      "llm_calls": 5,
+      "llm_time_ms": 0.2191129998436736,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 0,
+      "steps": 5,
+      "thinking_tokens": null,
+      "tool_executions": 4,
+      "tool_requests": 4,
+      "tool_retries": 0,
+      "tool_time_ms": 4.73280899996098,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "passthrough",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+      "kind": "warmup",
+      "phase": "warm",
+      "repetition": 1,
+      "task_id": "redundant_keystone_total"
+    },
+    "run_id": "ff0c5724fe56471ca1f945a3cf25c96f",
+    "session_id": "eval-40686a3a-36",
+    "started_at": "2026-10-09T17:28:03.092718+00:00",
+    "status": "success",
+    "task": "How much would 3 Keystone units cost in total, in USD?"
+  },
+  {
+    "config_snapshot": {
+      "learned_rules_active": [],
+      "max_steps": 12,
+      "max_tool_requests": 20
+    },
+    "created_at": "2026-10-09T17:28:03.074549+00:00",
+    "ended_at": "2026-10-09T17:28:03.087298+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "Three Keystone units cost 3600 USD.",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "cache_hit": 4
+      },
+      "duration_ms": 10.455692000050476,
+      "input_tokens": null,
+      "llm_calls": 5,
+      "llm_time_ms": 0.22320099992612086,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 4,
+      "steps": 5,
+      "thinking_tokens": null,
+      "tool_executions": 0,
+      "tool_requests": 4,
+      "tool_retries": 0,
+      "tool_time_ms": 2.8290219997870736,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "optimized",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+      "kind": "measured",
+      "phase": "warm",
+      "repetition": 1,
+      "task_id": "redundant_keystone_total"
+    },
+    "run_id": "7a4bc32535674fdfbab57db3d8e95df1",
+    "session_id": "eval-40686a3a-35",
+    "started_at": "2026-10-09T17:28:03.075361+00:00",
+    "status": "success",
+    "task": "How much would 3 Keystone units cost in total, in USD?"
+  },
+  {
+    "config_snapshot": {
+      "learned_rules_active": [],
+      "max_steps": 12,
+      "max_tool_requests": 20
+    },
+    "created_at": "2026-10-09T17:28:03.054803+00:00",
+    "ended_at": "2026-10-09T17:28:03.071224+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "Three Keystone units cost 3600 USD.",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "executed_live": 2,
+        "reused_in_run": 2
+      },
+      "duration_ms": 14.042896999967525,
+      "input_tokens": null,
+      "llm_calls": 5,
+      "llm_time_ms": 0.2590020001207449,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 2,
+      "steps": 5,
+      "thinking_tokens": null,
+      "tool_executions": 2,
+      "tool_requests": 4,
+      "tool_retries": 0,
+      "tool_time_ms": 4.591348999952061,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "optimized",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+      "kind": "warmup",
+      "phase": "warm",
+      "repetition": 1,
+      "task_id": "redundant_keystone_total"
+    },
+    "run_id": "63176ec6a8e6455d81ca260a349bc759",
+    "session_id": "eval-40686a3a-35",
+    "started_at": "2026-10-09T17:28:03.055635+00:00",
+    "status": "success",
+    "task": "How much would 3 Keystone units cost in total, in USD?"
+  },
+  {
+    "config_snapshot": {
+      "learned_rules_active": [],
+      "max_steps": 12,
+      "max_tool_requests": 20
+    },
+    "created_at": "2026-10-09T17:28:03.037978+00:00",
+    "ended_at": "2026-10-09T17:28:03.049417+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "Employees book economy class.",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "executed_live": 2
+      },
+      "duration_ms": 9.020730999964144,
+      "input_tokens": null,
+      "llm_calls": 3,
+      "llm_time_ms": 0.1411880000432575,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 0,
+      "steps": 3,
+      "thinking_tokens": null,
+      "tool_executions": 2,
+      "tool_requests": 2,
+      "tool_retries": 0,
+      "tool_time_ms": 2.627501000006305,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "passthrough",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+      "kind": "measured",
+      "phase": "warm",
+      "repetition": 1,
+      "task_id": "control_flight_class"
+    },
+    "run_id": "d45b99c194b540cdb3db72776c129fb0",
+    "session_id": "eval-40686a3a-34",
+    "started_at": "2026-10-09T17:28:03.038819+00:00",
+    "status": "success",
+    "task": "Which class do employees book for flights shorter than 6 hours?"
+  }
+]

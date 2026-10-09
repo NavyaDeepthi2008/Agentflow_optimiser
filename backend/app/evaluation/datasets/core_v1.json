@@ -1,0 +1,279 @@
+{
+  "name": "core",
+  "version": "1",
+  "description": "AgentFlow core evaluation set over the fictional Nimbus Labs mock tools. Expected answers and world checks are never shown to the agent.",
+  "tasks": [
+    {
+      "id": "redundant_orbit_price",
+      "category": "redundant",
+      "split": "train",
+      "task": "How much does Orbit cost per user per month on the monthly plan? Answer in USD.",
+      "tools": ["kb_search", "doc_read"],
+      "script": [
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Orbit price"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "orbit price"}}]},
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-002"}}]},
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-002"}}]},
+        {"answer_template": "Orbit costs {p} USD per user per month.",
+         "values": {"p": {"tool": "doc_read", "path": "result.body", "regex": "costs (\\d+) USD per user per month"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 29}]}}
+    },
+    {
+      "id": "redundant_refund_window",
+      "category": "redundant",
+      "split": "heldout",
+      "task": "Within how many days of purchase can a customer get a full refund?",
+      "tools": ["kb_search", "doc_read"],
+      "script": [
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "refund policy"}}]},
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-004"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Refund Policy"}}]},
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-004"}}]},
+        {"answer_template": "A full refund is possible within {d} days.",
+         "values": {"d": {"tool": "doc_read", "path": "result.body", "regex": "within (\\d+) days"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 30}]}}
+    },
+    {
+      "id": "redundant_support_hours",
+      "category": "redundant",
+      "split": "train",
+      "task": "What are the standard support hours?",
+      "tools": ["kb_search"],
+      "script": [
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "support hours"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Support  Hours"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "support hours"}}]},
+        {"answer_template": "Standard support is available {h}.",
+         "values": {"h": {"tool": "kb_search", "path": "result.results.0.snippet",
+                          "regex": "available (Monday to Friday, \\d\\d:\\d\\d to \\d\\d:\\d\\d IST)"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["monday to friday", "09:00", "18:00"]}}
+    },
+    {
+      "id": "redundant_keystone_total",
+      "category": "redundant",
+      "split": "heldout",
+      "task": "How much would 3 Keystone units cost in total, in USD?",
+      "tools": ["doc_read", "calculator"],
+      "script": [
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-003"}}]},
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-003"}}]},
+        {"tool_calls": [{"name": "calculator", "args": {"expression": "1200*3"}}]},
+        {"tool_calls": [{"name": "calculator", "args": {"expression": "1200*3"}}]},
+        {"answer_template": "Three Keystone units cost {t} USD.",
+         "values": {"t": {"tool": "calculator", "path": "result.result"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 3600}]}}
+    },
+    {
+      "id": "freshness_price_changed",
+      "category": "freshness",
+      "split": "train",
+      "scripted_only": true,
+      "task": "What is the current price of ORB-X? Check it, then check again a few minutes later and report the latest value.",
+      "tools": ["price_lookup"],
+      "script": [
+        {"tool_calls": [{"name": "price_lookup", "args": {"symbol": "ORB-X"}}]},
+        {"advance_seconds": 400, "tool_calls": [{"name": "price_lookup", "args": {"symbol": "ORB-X"}}]},
+        {"answer_template": "ORB-X is currently {p} USD.",
+         "values": {"p": {"tool": "price_lookup", "path": "result.price"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 45.91, "tolerance": 0.001}],
+                              "contains_none": ["45.18"]}}
+    },
+    {
+      "id": "freshness_within_ttl",
+      "category": "freshness",
+      "split": "heldout",
+      "scripted_only": true,
+      "task": "What is the current price of KST-X? Check it twice, half a minute apart.",
+      "tools": ["price_lookup"],
+      "script": [
+        {"tool_calls": [{"name": "price_lookup", "args": {"symbol": "KST-X"}}]},
+        {"advance_seconds": 30, "tool_calls": [{"name": "price_lookup", "args": {"symbol": "KST-X"}}]},
+        {"answer_template": "KST-X is {p} USD.",
+         "values": {"p": {"tool": "price_lookup", "path": "result.price"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 312.73, "tolerance": 0.001}]}}
+    },
+    {
+      "id": "freshness_stale_unchanged",
+      "category": "freshness",
+      "split": "train",
+      "scripted_only": true,
+      "task": "What is the current price of NMB-X? Check it, then check again two minutes later.",
+      "tools": ["price_lookup"],
+      "script": [
+        {"tool_calls": [{"name": "price_lookup", "args": {"symbol": "NMB-X"}}]},
+        {"advance_seconds": 120, "tool_calls": [{"name": "price_lookup", "args": {"symbol": "NMB-X"}}]},
+        {"answer_template": "NMB-X is {p} USD.",
+         "values": {"p": {"tool": "price_lookup", "path": "result.price"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 120.96, "tolerance": 0.001}]}}
+    },
+    {
+      "id": "freshness_read_after_write",
+      "category": "freshness",
+      "split": "heldout",
+      "task": "Mark ticket REC-1001 as resolved, then confirm its current status by reading it again.",
+      "tools": ["record_read", "record_update"],
+      "allow_side_effects": true,
+      "script": [
+        {"tool_calls": [{"name": "record_read", "args": {"record_id": "REC-1001"}}]},
+        {"tool_calls": [{"name": "record_update", "args": {"record_id": "REC-1001", "field": "status", "value": "resolved"}}]},
+        {"tool_calls": [{"name": "record_read", "args": {"record_id": "REC-1001"}}]},
+        {"answer_template": "REC-1001 is now {s}.",
+         "values": {"s": {"tool": "record_read", "path": "result.status"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["resolved"]},
+                   "world": [{"record": "REC-1001", "field": "status", "equals": "resolved"}]}
+    },
+    {
+      "id": "side_effect_double_reminder",
+      "category": "side_effect",
+      "split": "train",
+      "task": "Send the message 'Standup at 10' to team:orbit twice, as two separate notifications.",
+      "tools": ["send_notification"],
+      "allow_side_effects": true,
+      "script": [
+        {"tool_calls": [{"name": "send_notification", "args": {"recipient": "team:orbit", "message": "Standup at 10"}}]},
+        {"tool_calls": [{"name": "send_notification", "args": {"recipient": "team:orbit", "message": "Standup at 10"}}]},
+        {"answer_template": "Sent the reminder twice (last message id {m}).",
+         "values": {"m": {"tool": "send_notification", "path": "result.message_id"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["twice", "MSG-0002"]},
+                   "world": [{"outbox_count": 2}]}
+    },
+    {
+      "id": "side_effect_close_and_notify",
+      "category": "side_effect",
+      "split": "heldout",
+      "task": "Close ticket REC-1002 and notify team:keystone that it was closed.",
+      "tools": ["record_update", "send_notification"],
+      "allow_side_effects": true,
+      "script": [
+        {"tool_calls": [{"name": "record_update", "args": {"record_id": "REC-1002", "field": "status", "value": "closed"}}]},
+        {"tool_calls": [{"name": "send_notification", "args": {"recipient": "team:keystone", "message": "REC-1002 was closed"}}]},
+        {"answer_template": "REC-1002 is {s} and team:keystone was notified.",
+         "values": {"s": {"tool": "record_update", "path": "result.status"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["closed", "notified"]},
+                   "world": [{"record": "REC-1002", "field": "status", "equals": "closed"},
+                             {"outbox_count": 1}]}
+    },
+    {
+      "id": "side_effect_not_permitted",
+      "category": "side_effect",
+      "split": "train",
+      "task": "Notify team:billing that the refund policy wording changed.",
+      "tools": ["send_notification"],
+      "allow_side_effects": false,
+      "script": [
+        {"tool_calls": [{"name": "send_notification", "args": {"recipient": "team:billing", "message": "Refund policy wording changed"}}]},
+        {"answer_template": "I could not send the notification ({c}).",
+         "values": {"c": {"tool": "send_notification", "path": "error.code"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["permission_denied"]},
+                   "world": [{"outbox_count": 0}]}
+    },
+    {
+      "id": "failure_missing_document",
+      "category": "failure",
+      "split": "heldout",
+      "task": "Read knowledge-base document kb-099 and summarize it.",
+      "tools": ["doc_read"],
+      "script": [
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-099"}}]},
+        {"answer_template": "The document could not be read ({c}).",
+         "values": {"c": {"tool": "doc_read", "path": "error.code"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["not_found"]}}
+    },
+    {
+      "id": "failure_transient_outage",
+      "category": "failure",
+      "split": "train",
+      "task": "What is the daily meal allowance during business travel?",
+      "tools": ["kb_search", "doc_read"],
+      "setup": {"inject_failures": {"kb_search": 1}},
+      "script": [
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "travel meal allowance"}}]},
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-006"}}]},
+        {"answer_template": "The daily meal allowance is {a} INR.",
+         "values": {"a": {"tool": "doc_read", "path": "result.body", "regex": "allowance during business travel is (\\d+) INR"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 1500}]}}
+    },
+    {
+      "id": "failure_loop",
+      "category": "failure",
+      "split": "heldout",
+      "task": "Find the release date of Orbit 5.0.",
+      "tools": ["kb_search"],
+      "script": [
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Orbit 5.0 release date"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Orbit 5.0 release date"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Orbit 5.0 release date"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Orbit 5.0 release date"}}]},
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "Orbit 5.0 release date"}}]},
+        {"answer": "Unknown."}
+      ],
+      "expected": {"status": "loop_detected"}
+    },
+    {
+      "id": "failure_bad_calculation",
+      "category": "failure",
+      "split": "train",
+      "task": "Compute 1 divided by 0.",
+      "tools": ["calculator"],
+      "script": [
+        {"tool_calls": [{"name": "calculator", "args": {"expression": "1/0"}}]},
+        {"answer_template": "That cannot be computed ({c}).",
+         "values": {"c": {"tool": "calculator", "path": "error.code"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["invalid_request"]}}
+    },
+    {
+      "id": "control_flight_class",
+      "category": "control",
+      "split": "heldout",
+      "task": "Which class do employees book for flights shorter than 6 hours?",
+      "tools": ["kb_search", "doc_read"],
+      "script": [
+        {"tool_calls": [{"name": "kb_search", "args": {"query": "travel policy flights"}}]},
+        {"tool_calls": [{"name": "doc_read", "args": {"doc_id": "kb-006"}}]},
+        {"answer_template": "Employees book {c} class.",
+         "values": {"c": {"tool": "doc_read", "path": "result.body", "regex": "Employees book (\\w+) class"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["economy"]}}
+    },
+    {
+      "id": "control_annual_price",
+      "category": "control",
+      "split": "train",
+      "task": "What is 29 multiplied by 12?",
+      "tools": ["calculator"],
+      "script": [
+        {"tool_calls": [{"name": "calculator", "args": {"expression": "29*12"}}]},
+        {"answer_template": "29 x 12 = {r}.",
+         "values": {"r": {"tool": "calculator", "path": "result.result"}}}
+      ],
+      "expected": {"answer": {"numbers": [{"value": 348}]}}
+    },
+    {
+      "id": "control_record_status",
+      "category": "control",
+      "split": "heldout",
+      "task": "What is the current status of ticket REC-1003?",
+      "tools": ["record_read"],
+      "script": [
+        {"tool_calls": [{"name": "record_read", "args": {"record_id": "REC-1003"}}]},
+        {"answer_template": "REC-1003 is {s}.",
+         "values": {"s": {"tool": "record_read", "path": "result.status"}}}
+      ],
+      "expected": {"answer": {"contains_all": ["resolved"]}}
+    }
+  ]
+}

@@ -1,0 +1,517 @@
+{
+  "base_rule_ids": [],
+  "config": {
+    "dataset": "core",
+    "dataset_version": "2",
+    "llm": "scripted",
+    "repetitions": 1,
+    "seed": 0
+  },
+  "created_at": "2026-10-09T17:28:05.560066+00:00",
+  "ended_at": "2026-10-09T17:28:06.267343+00:00",
+  "error_message": null,
+  "finished": true,
+  "result": {
+    "arms": {
+      "off": {
+        "accuracy": 1.0,
+        "correct": 16,
+        "reused_results": 20,
+        "rule_applied": 0,
+        "runs": 16,
+        "tool_executions": 19,
+        "tool_executions_incl_warmups": 28,
+        "tool_requests": 41
+      },
+      "on": {
+        "accuracy": 1.0,
+        "correct": 16,
+        "reused_results": 21,
+        "rule_applied": 1,
+        "runs": 16,
+        "tool_executions": 18,
+        "tool_executions_incl_warmups": 27,
+        "tool_requests": 41
+      }
+    },
+    "criteria": [
+      {
+        "detail": "0 correct-to-incorrect changes",
+        "label": "No task that was correct with the rule off became incorrect",
+        "name": "no_correct_to_incorrect",
+        "passed": true
+      },
+      {
+        "detail": "off 100%, on 100%",
+        "label": "Accuracy did not decrease",
+        "name": "accuracy_not_lower",
+        "passed": true
+      },
+      {
+        "detail": "none found",
+        "label": "No safety violation",
+        "name": "no_safety_violation",
+        "passed": true
+      },
+      {
+        "detail": "off 19, on 18 (measured runs)",
+        "label": "Tool executions decreased",
+        "name": "executions_decreased",
+        "passed": true
+      },
+      {
+        "detail": "1 would-be reuses, 0 differed from the live result",
+        "label": "In shadow, every result the rule would have reused matched the live result",
+        "name": "no_stale_data_in_shadow",
+        "passed": true
+      }
+    ],
+    "failed_criteria": [],
+    "method": {
+      "arms": "off = rule in shadow; on = rule active; both optimized, same active rules",
+      "cold_cache": "new mock world, gateway and session for every planned run",
+      "dataset": "core v2",
+      "llm": "scripted",
+      "order": "arms run back to back per planned run, shuffled with seed 0",
+      "repetitions": 1,
+      "split": "heldout",
+      "warm_phase": "included: warm-up run then measured run in one new session"
+    },
+    "passed": true,
+    "regressions": [],
+    "safety_violations": [],
+    "shadow": {
+      "examples": [],
+      "matched": 1,
+      "mismatched": 0,
+      "would_reuse": 1
+    },
+    "skipped": [
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "freshness_within_ttl"
+      },
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "freshness_read_after_write"
+      },
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "side_effect_close_and_notify"
+      },
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "recheck_ticket_followup"
+      }
+    ],
+    "tasks": [
+      {
+        "category": "control",
+        "off": {
+          "correct": true,
+          "final_answer": "Employees book economy class.",
+          "run_id": "1a6d2eca3c044fd4b087569e10db59ba",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "Employees book economy class.",
+          "run_id": "5f3c8bb5578a412c9c76ac55335786db",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "control_flight_class"
+      },
+      {
+        "category": "control",
+        "off": {
+          "correct": true,
+          "final_answer": "Employees book economy class.",
+          "run_id": "07b4794822964273b4627b6bb8e0aeb9",
+          "status": "success",
+          "tool_executions": 0,
+          "tool_requests": 2,
+          "warmup_run_id": "62d7ad3aa352410985ebd9ef6527f80b"
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "Employees book economy class.",
+          "run_id": "ce0de85da5c7409594a00397142435d7",
+          "status": "success",
+          "tool_executions": 0,
+          "tool_requests": 2,
+          "warmup_run_id": "096a7d8cd03e42c984fec5792cc7f178"
+        },
+        "phase": "warm",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "control_flight_class"
+      },
+      {
+        "category": "control",
+        "off": {
+          "correct": true,
+          "final_answer": "REC-1003 is resolved.",
+          "run_id": "c85c8a8df36a4d65a782d953ce1e5aea",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 1,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "REC-1003 is resolved.",
+          "run_id": "9a114302726c4f7899799b2c6ff5ee33",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 1,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "control_record_status"
+      },
+      {
+        "category": "control",
+        "off": {
+          "correct": true,
+          "final_answer": "REC-1003 is resolved.",
+          "run_id": "a831b7e5ed654078b936e0aa13a8eb30",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 1,
+          "warmup_run_id": "f3ab61534a434d2badf42d24ecc924eb"
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "REC-1003 is resolved.",
+          "run_id": "23f4921bec2741fd90c13248dc8f350d",
+          "status": "success",
+          "tool_executions": 0,
+          "tool_requests": 1,
+          "warmup_run_id": "55cafb5c529e42cd94e40c8d9b771adb"
+        },
+        "phase": "warm",
+        "repetition": 1,
+        "rule_applied": 1,
+        "task_id": "control_record_status"
+      },
+      {
+        "category": "failure",
+        "off": {
+          "correct": true,
+          "final_answer": null,
+          "run_id": "b56640baa9bf4210b1d8e9cabed25445",
+          "status": "loop_detected",
+          "tool_executions": 1,
+          "tool_requests": 4,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": null,
+          "run_id": "f45164f25ff7457389c3b157e3136c70",
+          "status": "loop_detected",
+          "tool_executions": 1,
+          "tool_requests": 4,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "failure_loop"
+      },
+      {
+        "category": "failure",
+        "off": {
+          "correct": true,
+          "final_answer": null,
+          "run_id": "14c660097e934a21bf958dbceeda52df",
+          "status": "loop_detected",
+          "tool_executions": 0,
+          "tool_requests": 4,
+          "warmup_run_id": "9528894181e148fdbe863a28b3955fd1"
+        },
+        "on": {
+          "correct": true,
+          "final_answer": null,
+          "run_id": "85a9af1dd7a54ff1b299f1458d6724da",
+          "status": "loop_detected",
+          "tool_executions": 0,
+          "tool_requests": 4,
+          "warmup_run_id": "b91f60580925457eab4dda710d7a1f5e"
+        },
+        "phase": "warm",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "failure_loop"
+      },
+      {
+        "category": "failure",
+        "off": {
+          "correct": true,
+          "final_answer": "The document could not be read (not_found).",
+          "run_id": "34a008bdc80546518d17b05ee84030fd",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 1,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "The document could not be read (not_found).",
+          "run_id": "4b8b984a7f5e422cace9b9e4ac3c1acb",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 1,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "failure_missing_document"
+      },
+      {
+        "category": "failure",
+        "off": {
+          "correct": true,
+          "final_answer": "The document could not be read (not_found).",
+          "run_id": "8e9d3d25e9744f2491a150abcd0fe6d9",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 1,
+          "warmup_run_id": "2fec333d3c434b188473716bf347c344"
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "The document could not be read (not_found).",
+          "run_id": "8d9c314776e047e4b6e795e0f500e592",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 1,
+          "warmup_run_id": "212dd843377649deb71caac5e66e3c04"
+        },
+        "phase": "warm",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "failure_missing_document"
+      },
+      {
+        "category": "freshness",
+        "off": {
+          "correct": true,
+          "final_answer": "REC-1001 is now resolved.",
+          "run_id": "b86114861ad242839e4d3415f33436fe",
+          "status": "success",
+          "tool_executions": 3,
+          "tool_requests": 3,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "REC-1001 is now resolved.",
+          "run_id": "67d57582897c4e4d88ac345f5d8d299e",
+          "status": "success",
+          "tool_executions": 3,
+          "tool_requests": 3,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "freshness_read_after_write"
+      },
+      {
+        "category": "freshness",
+        "off": {
+          "correct": true,
+          "final_answer": "KST-X is 312.73 USD.",
+          "run_id": "19c05403ccf2470391d5adfd70cfe5a7",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "KST-X is 312.73 USD.",
+          "run_id": "66c754a6454348139ee30cc38a17a3ca",
+          "status": "success",
+          "tool_executions": 1,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "freshness_within_ttl"
+      },
+      {
+        "category": "freshness",
+        "off": {
+          "correct": true,
+          "final_answer": "REC-1001 is open.",
+          "run_id": "4c867a1ffe874e00abb02a7912b4ccdd",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "REC-1001 is open.",
+          "run_id": "62879817491b40e3ac58825a86356f0f",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "recheck_ticket_followup"
+      },
+      {
+        "category": "redundant",
+        "off": {
+          "correct": true,
+          "final_answer": "Three Keystone units cost 3600 USD.",
+          "run_id": "46abec9467c341cd9ee834b348a199f7",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 4,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "Three Keystone units cost 3600 USD.",
+          "run_id": "d245f886d0c044f4b9622ee79f743f71",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 4,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "redundant_keystone_total"
+      },
+      {
+        "category": "redundant",
+        "off": {
+          "correct": true,
+          "final_answer": "Three Keystone units cost 3600 USD.",
+          "run_id": "905cbf2f5ed249228fdf20624b7d7f93",
+          "status": "success",
+          "tool_executions": 0,
+          "tool_requests": 4,
+          "warmup_run_id": "c067be930e1145769329c26d6f297e80"
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "Three Keystone units cost 3600 USD.",
+          "run_id": "26aaf37506474d8db8eb631c53bd9f1d",
+          "status": "success",
+          "tool_executions": 0,
+          "tool_requests": 4,
+          "warmup_run_id": "234bd5948eca4b36a549532a7f0bf96d"
+        },
+        "phase": "warm",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "redundant_keystone_total"
+      },
+      {
+        "category": "redundant",
+        "off": {
+          "correct": true,
+          "final_answer": "A full refund is possible within 30 days.",
+          "run_id": "325e26db08f04deb99ff509816863b56",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 4,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "A full refund is possible within 30 days.",
+          "run_id": "4d1419b966974c95ad9d6e24356387eb",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 4,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "redundant_refund_window"
+      },
+      {
+        "category": "redundant",
+        "off": {
+          "correct": true,
+          "final_answer": "A full refund is possible within 30 days.",
+          "run_id": "932324186e6c43d6a5edc086a047366a",
+          "status": "success",
+          "tool_executions": 0,
+          "tool_requests": 4,
+          "warmup_run_id": "61725bc62fad4edf802312ce136470b9"
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "A full refund is possible within 30 days.",
+          "run_id": "67d57933b88f4b418aab78ba0cc8843a",
+          "status": "success",
+          "tool_executions": 0,
+          "tool_requests": 4,
+          "warmup_run_id": "858a2016d5d74934a0a86ccb86972f10"
+        },
+        "phase": "warm",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "redundant_refund_window"
+      },
+      {
+        "category": "side_effect",
+        "off": {
+          "correct": true,
+          "final_answer": "REC-1002 is closed and team:keystone was notified.",
+          "run_id": "79655be89c444f1b859eb69a89afa9e0",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "on": {
+          "correct": true,
+          "final_answer": "REC-1002 is closed and team:keystone was notified.",
+          "run_id": "6dfa79e46f1248179fd8fb42ece2c1a5",
+          "status": "success",
+          "tool_executions": 2,
+          "tool_requests": 2,
+          "warmup_run_id": null
+        },
+        "phase": "cold",
+        "repetition": 1,
+        "rule_applied": 0,
+        "task_id": "side_effect_close_and_notify"
+      }
+    ]
+  },
+  "rule_id": "911a675d585140b48e0ce02733db0b19",
+  "status": "passed",
+  "validation_id": "ea3a3b1c277e4d639dcdccce6955d23c"
+}

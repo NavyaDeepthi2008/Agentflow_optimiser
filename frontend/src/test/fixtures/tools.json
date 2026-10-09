@@ -1,0 +1,265 @@
+{
+  "tools": [
+    {
+      "cache_scope": "global",
+      "description": "Evaluate an arithmetic expression and return the numeric result.",
+      "effect": "read_only",
+      "effective_cache_scope": "global",
+      "effective_ttl_seconds": null,
+      "freshness": "static",
+      "learned_rules": [],
+      "learning_eligible": true,
+      "max_ttl_seconds": null,
+      "name": "calculator",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "expression": {
+            "description": "Arithmetic expression using numbers, + - * / // % ** and parentheses.",
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "force_fresh": {
+            "description": "Optional. Set to true only if you need a newer result than one already obtained for the same request.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "expression"
+        ],
+        "type": "object"
+      },
+      "requires_permission": false,
+      "timeout_seconds": 2.0,
+      "ttl_seconds": null
+    },
+    {
+      "cache_scope": "session",
+      "description": "Read the full text of one Nimbus Labs knowledge-base document by id.",
+      "effect": "read_only",
+      "effective_cache_scope": "session",
+      "effective_ttl_seconds": 3600.0,
+      "freshness": "ttl",
+      "learned_rules": [],
+      "learning_eligible": true,
+      "max_ttl_seconds": 86400.0,
+      "name": "doc_read",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "doc_id": {
+            "description": "Document id, e.g. 'kb-002'.",
+            "pattern": "^kb-\\d{3}$",
+            "type": "string"
+          },
+          "force_fresh": {
+            "description": "Optional. Set to true only if you need a newer result than one already obtained for the same request.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "doc_id"
+        ],
+        "type": "object"
+      },
+      "requires_permission": false,
+      "timeout_seconds": 5.0,
+      "ttl_seconds": 3600.0
+    },
+    {
+      "cache_scope": "session",
+      "description": "Search the Nimbus Labs knowledge base. Returns matching document ids, titles and short snippets. Use doc_read to get a full document.",
+      "effect": "read_only",
+      "effective_cache_scope": "session",
+      "effective_ttl_seconds": 3600.0,
+      "freshness": "ttl",
+      "learned_rules": [],
+      "learning_eligible": true,
+      "max_ttl_seconds": 86400.0,
+      "name": "kb_search",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "force_fresh": {
+            "description": "Optional. Set to true only if you need a newer result than one already obtained for the same request.",
+            "type": "boolean"
+          },
+          "limit": {
+            "default": 3,
+            "description": "Maximum number of results.",
+            "maximum": 10,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "query": {
+            "description": "What to search for.",
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "requires_permission": false,
+      "timeout_seconds": 5.0,
+      "ttl_seconds": 3600.0
+    },
+    {
+      "cache_scope": "session",
+      "description": "Get the current price of a fictional instrument. Prices change every few minutes.",
+      "effect": "read_only",
+      "effective_cache_scope": "session",
+      "effective_ttl_seconds": 60.0,
+      "freshness": "ttl",
+      "learned_rules": [],
+      "learning_eligible": true,
+      "max_ttl_seconds": 300.0,
+      "name": "price_lookup",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "force_fresh": {
+            "description": "Optional. Set to true only if you need a newer result than one already obtained for the same request.",
+            "type": "boolean"
+          },
+          "symbol": {
+            "description": "Fictional instrument symbol, e.g. 'NMB-X'. Available: NMB-X, ORB-X, KST-X.",
+            "pattern": "^[A-Z]{3}-X$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "symbol"
+        ],
+        "type": "object"
+      },
+      "requires_permission": false,
+      "timeout_seconds": 5.0,
+      "ttl_seconds": 60.0
+    },
+    {
+      "cache_scope": "run",
+      "description": "Read one ticket record (title, status, owner, note, version) by id.",
+      "effect": "read_only",
+      "effective_cache_scope": "run",
+      "effective_ttl_seconds": 300.0,
+      "freshness": "ttl",
+      "learned_rules": [],
+      "learning_eligible": true,
+      "max_ttl_seconds": 900.0,
+      "name": "record_read",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "force_fresh": {
+            "description": "Optional. Set to true only if you need a newer result than one already obtained for the same request.",
+            "type": "boolean"
+          },
+          "record_id": {
+            "description": "Record id, e.g. 'REC-1001'.",
+            "pattern": "^REC-\\d{4}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "record_id"
+        ],
+        "type": "object"
+      },
+      "requires_permission": false,
+      "timeout_seconds": 5.0,
+      "ttl_seconds": 300.0
+    },
+    {
+      "cache_scope": "run",
+      "description": "Change one field (status, owner or note) of a ticket record. This modifies data.",
+      "effect": "side_effect",
+      "effective_cache_scope": "run",
+      "effective_ttl_seconds": null,
+      "freshness": "live",
+      "learned_rules": [],
+      "learning_eligible": false,
+      "max_ttl_seconds": null,
+      "name": "record_update",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "field": {
+            "description": "Which field to change.",
+            "enum": [
+              "status",
+              "owner",
+              "note"
+            ],
+            "type": "string"
+          },
+          "record_id": {
+            "description": "Record id, e.g. 'REC-1001'.",
+            "pattern": "^REC-\\d{4}$",
+            "type": "string"
+          },
+          "value": {
+            "description": "New value. For status: open, in_progress, resolved or closed.",
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "record_id",
+          "field",
+          "value"
+        ],
+        "type": "object"
+      },
+      "requires_permission": true,
+      "timeout_seconds": 5.0,
+      "ttl_seconds": null
+    },
+    {
+      "cache_scope": "run",
+      "description": "Send a notification message to a team or user. This performs an action.",
+      "effect": "side_effect",
+      "effective_cache_scope": "run",
+      "effective_ttl_seconds": null,
+      "freshness": "live",
+      "learned_rules": [],
+      "learning_eligible": false,
+      "max_ttl_seconds": null,
+      "name": "send_notification",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "idempotency_key": {
+            "description": "Optional key; repeating a key returns the original message instead of sending again.",
+            "pattern": "^[A-Za-z0-9_-]{8,64}$",
+            "type": "string"
+          },
+          "message": {
+            "description": "Message text.",
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "recipient": {
+            "description": "Recipient, e.g. 'team:billing' or 'user:asha'.",
+            "pattern": "^(team|user):[a-z0-9_-]{1,32}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "recipient",
+          "message"
+        ],
+        "type": "object"
+      },
+      "requires_permission": true,
+      "timeout_seconds": 5.0,
+      "ttl_seconds": null
+    }
+  ]
+}

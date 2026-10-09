@@ -1,0 +1,43 @@
+[
+  {
+    "completed_runs": 36,
+    "config": {
+      "categories": [
+        "redundant",
+        "freshness",
+        "control"
+      ],
+      "dataset": "core",
+      "dataset_version": "1",
+      "llm": "scripted",
+      "max_steps": 12,
+      "max_tool_requests": 20,
+      "modes": [
+        "passthrough",
+        "optimized"
+      ],
+      "repetitions": 1,
+      "run_timeout_seconds": 90.0,
+      "seed": 0,
+      "split": null,
+      "task_ids": null,
+      "warm_cache": true,
+      "warm_gap_seconds": 0.0
+    },
+    "created_at": "2026-10-09T17:28:02.154424+00:00",
+    "dataset": {
+      "checksum": "40f4d5dbe8d05c24c2fe975130909af33d8647fdb516ee14e1598069a9b99926",
+      "name": "core",
+      "version": "1"
+    },
+    "ended_at": "2026-10-09T17:28:03.132214+00:00",
+    "error": null,
+    "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+    "finished": true,
+    "planned_runs": 36,
+    "provider": "scripted",
+    "report": null,
+    "started_at": "2026-10-09T17:28:02.158553+00:00",
+    "status": "completed"
+  }
+]

@@ -1,0 +1,741 @@
+{
+  "details": {
+    "llm_calls": [
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.08119999995415128,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 1,
+        "thinking_tokens": null,
+        "tool_calls_requested": [
+          "kb_search"
+        ],
+        "total_tokens": null
+      },
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.07252400007473625,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 2,
+        "thinking_tokens": null,
+        "tool_calls_requested": [
+          "kb_search"
+        ],
+        "total_tokens": null
+      },
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.047924000000421074,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 3,
+        "thinking_tokens": null,
+        "tool_calls_requested": [
+          "doc_read"
+        ],
+        "total_tokens": null
+      },
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.04658499995002785,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 4,
+        "thinking_tokens": null,
+        "tool_calls_requested": [
+          "doc_read"
+        ],
+        "total_tokens": null
+      },
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.18298400004823634,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 5,
+        "thinking_tokens": null,
+        "tool_calls_requested": [],
+        "total_tokens": null
+      }
+    ],
+    "run": {
+      "config_snapshot": {
+        "gemini_temperature": null,
+        "gemini_thinking_level": null,
+        "learned_rules_active": [],
+        "learned_rules_shadow": [],
+        "max_identical_requests": 3,
+        "max_steps": 12,
+        "max_tool_requests": 20,
+        "model_id": "scripted-reference",
+        "provider": "scripted",
+        "run_timeout_seconds": 90.0
+      },
+      "created_at": "2026-10-09T17:28:01.764275+00:00",
+      "ended_at": "2026-10-09T17:28:01.787524+00:00",
+      "error": null,
+      "estimated_cost": null,
+      "final_answer": "Orbit costs 29 USD per user per month.",
+      "finished": true,
+      "metrics": {
+        "cached_input_tokens": null,
+        "decision_counts": {
+          "executed_live": 2,
+          "reused_in_run": 2
+        },
+        "duration_ms": 17.12017600004856,
+        "input_tokens": null,
+        "llm_calls": 5,
+        "llm_time_ms": 0.4312170000275728,
+        "model_versions": [
+          "scripted-reference"
+        ],
+        "output_tokens": null,
+        "reused_results": 2,
+        "steps": 5,
+        "thinking_tokens": null,
+        "tool_executions": 2,
+        "tool_requests": 4,
+        "tool_retries": 0,
+        "tool_time_ms": 5.581414000062068,
+        "total_tokens": null,
+        "usage_complete": false
+      },
+      "mode": "optimized",
+      "model_id": "scripted-reference",
+      "provider": "scripted",
+      "request_options": {
+        "allow_side_effects": false,
+        "fresh_tools": [],
+        "llm": "scripted",
+        "max_steps": null,
+        "max_tool_requests": null,
+        "mode": "optimized",
+        "scenario": {
+          "dataset": "core",
+          "task_id": "redundant_orbit_price",
+          "version": "1"
+        },
+        "scripted_replies": null,
+        "session_id": "fx-opt",
+        "tools": [
+          "kb_search",
+          "doc_read"
+        ]
+      },
+      "run_id": "bb2a2cf7e88d46a09f0a9b376ff8c773",
+      "session_id": "fx-opt",
+      "started_at": "2026-10-09T17:28:01.767616+00:00",
+      "status": "success",
+      "task": "How much does Orbit cost per user per month on the monthly plan? Answer in USD."
+    },
+    "tool_calls": [
+      {
+        "cache_age_seconds": null,
+        "cache_status": "miss",
+        "call_id": "scripted-call-1",
+        "decision": "executed_live",
+        "duration_ms": 1.903789000039069,
+        "ended_at": "2026-10-09T17:28:01.775179+00:00",
+        "error_code": null,
+        "error_message": null,
+        "executed": true,
+        "executions": 1,
+        "forced_fresh": false,
+        "invalidated_entries": 0,
+        "learned_rules": null,
+        "ok": true,
+        "output": {
+          "results": [
+            {
+              "doc_id": "kb-002",
+              "score": 4,
+              "snippet": "Orbit is a team scheduling application launched in 2021. The current version is 4.2. Orbit costs 29 USD per user per month on the monthly pl",
+              "title": "Orbit product sheet"
+            },
+            {
+              "doc_id": "kb-008",
+              "score": 4,
+              "snippet": "Orbit 4.2 was released on 2026-03-14. It added two-way calendar sync and a dark theme. Orbit 4.3 is planned for the fourth quarter of 2026.",
+              "title": "Orbit 4.2 release notes"
+            },
+            {
+              "doc_id": "kb-001",
+              "score": 1,
+              "snippet": "Nimbus Labs is a fictional software company founded in 2019. Its headquarters is in Pune and it has 140 employees. Nimbus Labs sells two pro",
+              "title": "Nimbus Labs company overview"
+            }
+          ]
+        },
+        "output_truncated": false,
+        "seq": 1,
+        "shadow": null,
+        "source": "live",
+        "started_at": "2026-10-09T17:28:01.773269+00:00",
+        "tool_duration_ms": 0.9356890000162821,
+        "tool_name": "kb_search"
+      },
+      {
+        "cache_age_seconds": 0.0035351629999240686,
+        "cache_status": "hit",
+        "call_id": "scripted-call-2",
+        "decision": "reused_in_run",
+        "duration_ms": 1.0755380000091463,
+        "ended_at": "2026-10-09T17:28:01.778711+00:00",
+        "error_code": null,
+        "error_message": null,
+        "executed": false,
+        "executions": 0,
+        "forced_fresh": false,
+        "invalidated_entries": 0,
+        "learned_rules": null,
+        "ok": true,
+        "output": {
+          "results": [
+            {
+              "doc_id": "kb-002",
+              "score": 4,
+              "snippet": "Orbit is a team scheduling application launched in 2021. The current version is 4.2. Orbit costs 29 USD per user per month on the monthly pl",
+              "title": "Orbit product sheet"
+            },
+            {
+              "doc_id": "kb-008",
+              "score": 4,
+              "snippet": "Orbit 4.2 was released on 2026-03-14. It added two-way calendar sync and a dark theme. Orbit 4.3 is planned for the fourth quarter of 2026.",
+              "title": "Orbit 4.2 release notes"
+            },
+            {
+              "doc_id": "kb-001",
+              "score": 1,
+              "snippet": "Nimbus Labs is a fictional software company founded in 2019. Its headquarters is in Pune and it has 140 employees. Nimbus Labs sells two pro",
+              "title": "Nimbus Labs company overview"
+            }
+          ]
+        },
+        "output_truncated": false,
+        "seq": 2,
+        "shadow": null,
+        "source": "in_run",
+        "started_at": "2026-10-09T17:28:01.777637+00:00",
+        "tool_duration_ms": null,
+        "tool_name": "kb_search"
+      },
+      {
+        "cache_age_seconds": null,
+        "cache_status": "miss",
+        "call_id": "scripted-call-3",
+        "decision": "executed_live",
+        "duration_ms": 1.6140799999675437,
+        "ended_at": "2026-10-09T17:28:01.782331+00:00",
+        "error_code": null,
+        "error_message": null,
+        "executed": true,
+        "executions": 1,
+        "forced_fresh": false,
+        "invalidated_entries": 0,
+        "learned_rules": null,
+        "ok": true,
+        "output": {
+          "body": "Orbit is a team scheduling application launched in 2021. The current version is 4.2. Orbit costs 29 USD per user per month on the monthly plan and 290 USD per user per year on the annual plan.",
+          "doc_id": "kb-002",
+          "title": "Orbit product sheet"
+        },
+        "output_truncated": false,
+        "seq": 3,
+        "shadow": null,
+        "source": "live",
+        "started_at": "2026-10-09T17:28:01.780714+00:00",
+        "tool_duration_ms": 0.6307170000354745,
+        "tool_name": "doc_read"
+      },
+      {
+        "cache_age_seconds": 0.0031523180000476714,
+        "cache_status": "hit",
+        "call_id": "scripted-call-4",
+        "decision": "reused_in_run",
+        "duration_ms": 0.9880070000463093,
+        "ended_at": "2026-10-09T17:28:01.785467+00:00",
+        "error_code": null,
+        "error_message": null,
+        "executed": false,
+        "executions": 0,
+        "forced_fresh": false,
+        "invalidated_entries": 0,
+        "learned_rules": null,
+        "ok": true,
+        "output": {
+          "body": "Orbit is a team scheduling application launched in 2021. The current version is 4.2. Orbit costs 29 USD per user per month on the monthly plan and 290 USD per user per year on the annual plan.",
+          "doc_id": "kb-002",
+          "title": "Orbit product sheet"
+        },
+        "output_truncated": false,
+        "seq": 4,
+        "shadow": null,
+        "source": "in_run",
+        "started_at": "2026-10-09T17:28:01.784479+00:00",
+        "tool_duration_ms": null,
+        "tool_name": "doc_read"
+      }
+    ]
+  },
+  "run": {
+    "config_snapshot": {
+      "gemini_temperature": null,
+      "gemini_thinking_level": null,
+      "learned_rules_active": [],
+      "learned_rules_shadow": [],
+      "max_identical_requests": 3,
+      "max_steps": 12,
+      "max_tool_requests": 20,
+      "model_id": "scripted-reference",
+      "provider": "scripted",
+      "run_timeout_seconds": 90.0
+    },
+    "created_at": "2026-10-09T17:28:01.764275+00:00",
+    "ended_at": "2026-10-09T17:28:01.787524+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "Orbit costs 29 USD per user per month.",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "executed_live": 2,
+        "reused_in_run": 2
+      },
+      "duration_ms": 17.12017600004856,
+      "input_tokens": null,
+      "llm_calls": 5,
+      "llm_time_ms": 0.4312170000275728,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 2,
+      "steps": 5,
+      "thinking_tokens": null,
+      "tool_executions": 2,
+      "tool_requests": 4,
+      "tool_retries": 0,
+      "tool_time_ms": 5.581414000062068,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "optimized",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "allow_side_effects": false,
+      "fresh_tools": [],
+      "llm": "scripted",
+      "max_steps": null,
+      "max_tool_requests": null,
+      "mode": "optimized",
+      "scenario": {
+        "dataset": "core",
+        "task_id": "redundant_orbit_price",
+        "version": "1"
+      },
+      "scripted_replies": null,
+      "session_id": "fx-opt",
+      "tools": [
+        "kb_search",
+        "doc_read"
+      ]
+    },
+    "run_id": "bb2a2cf7e88d46a09f0a9b376ff8c773",
+    "session_id": "fx-opt",
+    "started_at": "2026-10-09T17:28:01.767616+00:00",
+    "status": "success",
+    "task": "How much does Orbit cost per user per month on the monthly plan? Answer in USD."
+  },
+  "trace": {
+    "events": [
+      {
+        "at": "2026-10-09T17:28:01.770423+00:00",
+        "call_id": null,
+        "data": {
+          "max_steps": 12,
+          "max_tool_requests": 20,
+          "mode": "optimized",
+          "model_id": "scripted-reference",
+          "provider": "scripted",
+          "run_timeout_seconds": 90.0,
+          "task": "How much does Orbit cost per user per month on the monthly plan? Answer in USD.",
+          "tools_offered": [
+            "doc_read",
+            "kb_search"
+          ]
+        },
+        "id": 1,
+        "type": "run.started"
+      },
+      {
+        "at": "2026-10-09T17:28:01.772341+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.08119999995415128,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 1,
+          "tool_calls_requested": [
+            "kb_search"
+          ],
+          "usage": null
+        },
+        "id": 2,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.773291+00:00",
+        "call_id": "scripted-call-1",
+        "data": {
+          "mode": "optimized",
+          "tool_name": "kb_search"
+        },
+        "id": 3,
+        "type": "tool_call.requested"
+      },
+      {
+        "at": "2026-10-09T17:28:01.775251+00:00",
+        "call_id": "scripted-call-1",
+        "data": {
+          "args": {
+            "limit": 3,
+            "query": "Orbit price"
+          },
+          "cache_age_seconds": null,
+          "cache_status": "miss",
+          "data_time": 517.184792903,
+          "decision": "executed_live",
+          "duration_ms": 1.903789000039069,
+          "effect": "read_only",
+          "ended_at": "2026-10-09T17:28:01.775179+00:00",
+          "error_code": null,
+          "error_message": null,
+          "executed": true,
+          "executions": 1,
+          "fingerprint": "5abc7beea0cab3c94a7edfcda050196775f95513461ea7b37c3fa339ae7d4840",
+          "forced_fresh": false,
+          "freshness": "ttl",
+          "invalidated_entries": 0,
+          "learned_rules": [],
+          "mode": "optimized",
+          "ok": true,
+          "output_digest": "2807c0ca6a6fb76147cf8e8e9e1521c49478e48e73871619b43168acb54edfb8",
+          "run_tool_requests": 1,
+          "shadow": null,
+          "source": "live",
+          "started_at": "2026-10-09T17:28:01.773269+00:00",
+          "tool_duration_ms": 0.9356890000162821,
+          "tool_name": "kb_search",
+          "tool_version": "1"
+        },
+        "id": 4,
+        "type": "tool_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.776805+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.07252400007473625,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 2,
+          "tool_calls_requested": [
+            "kb_search"
+          ],
+          "usage": null
+        },
+        "id": 5,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.777655+00:00",
+        "call_id": "scripted-call-2",
+        "data": {
+          "mode": "optimized",
+          "tool_name": "kb_search"
+        },
+        "id": 6,
+        "type": "tool_call.requested"
+      },
+      {
+        "at": "2026-10-09T17:28:01.778809+00:00",
+        "call_id": "scripted-call-2",
+        "data": {
+          "args": {
+            "limit": 3,
+            "query": "orbit price"
+          },
+          "cache_age_seconds": 0.0035351629999240686,
+          "cache_status": "hit",
+          "data_time": 517.189158553,
+          "decision": "reused_in_run",
+          "duration_ms": 1.0755380000091463,
+          "effect": "read_only",
+          "ended_at": "2026-10-09T17:28:01.778711+00:00",
+          "error_code": null,
+          "error_message": null,
+          "executed": false,
+          "executions": 0,
+          "fingerprint": "5abc7beea0cab3c94a7edfcda050196775f95513461ea7b37c3fa339ae7d4840",
+          "forced_fresh": false,
+          "freshness": "ttl",
+          "invalidated_entries": 0,
+          "learned_rules": [],
+          "mode": "optimized",
+          "ok": true,
+          "output_digest": "2807c0ca6a6fb76147cf8e8e9e1521c49478e48e73871619b43168acb54edfb8",
+          "run_tool_requests": 2,
+          "shadow": null,
+          "source": "in_run",
+          "started_at": "2026-10-09T17:28:01.777637+00:00",
+          "tool_duration_ms": null,
+          "tool_name": "kb_search",
+          "tool_version": "1"
+        },
+        "id": 7,
+        "type": "tool_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.779861+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.047924000000421074,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 3,
+          "tool_calls_requested": [
+            "doc_read"
+          ],
+          "usage": null
+        },
+        "id": 8,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.780728+00:00",
+        "call_id": "scripted-call-3",
+        "data": {
+          "mode": "optimized",
+          "tool_name": "doc_read"
+        },
+        "id": 9,
+        "type": "tool_call.requested"
+      },
+      {
+        "at": "2026-10-09T17:28:01.782391+00:00",
+        "call_id": "scripted-call-3",
+        "data": {
+          "args": {
+            "doc_id": "kb-002"
+          },
+          "cache_age_seconds": null,
+          "cache_status": "miss",
+          "data_time": 517.192234066,
+          "decision": "executed_live",
+          "duration_ms": 1.6140799999675437,
+          "effect": "read_only",
+          "ended_at": "2026-10-09T17:28:01.782331+00:00",
+          "error_code": null,
+          "error_message": null,
+          "executed": true,
+          "executions": 1,
+          "fingerprint": "1951bcd07790fda1fcf2a700b5b1028c3ec7e134dedc842028c30d0e97df3c07",
+          "forced_fresh": false,
+          "freshness": "ttl",
+          "invalidated_entries": 0,
+          "learned_rules": [],
+          "mode": "optimized",
+          "ok": true,
+          "output_digest": "c91ab4f972f9d1f14ca33d56a57d86fb741da6a0c21d6466f54971708afaefc0",
+          "run_tool_requests": 3,
+          "shadow": null,
+          "source": "live",
+          "started_at": "2026-10-09T17:28:01.780714+00:00",
+          "tool_duration_ms": 0.6307170000354745,
+          "tool_name": "doc_read",
+          "tool_version": "1"
+        },
+        "id": 10,
+        "type": "tool_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.783567+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.04658499995002785,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 4,
+          "tool_calls_requested": [
+            "doc_read"
+          ],
+          "usage": null
+        },
+        "id": 11,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.784524+00:00",
+        "call_id": "scripted-call-4",
+        "data": {
+          "mode": "optimized",
+          "tool_name": "doc_read"
+        },
+        "id": 12,
+        "type": "tool_call.requested"
+      },
+      {
+        "at": "2026-10-09T17:28:01.785521+00:00",
+        "call_id": "scripted-call-4",
+        "data": {
+          "args": {
+            "doc_id": "kb-002"
+          },
+          "cache_age_seconds": 0.0031523180000476714,
+          "cache_status": "hit",
+          "data_time": 517.196029417,
+          "decision": "reused_in_run",
+          "duration_ms": 0.9880070000463093,
+          "effect": "read_only",
+          "ended_at": "2026-10-09T17:28:01.785467+00:00",
+          "error_code": null,
+          "error_message": null,
+          "executed": false,
+          "executions": 0,
+          "fingerprint": "1951bcd07790fda1fcf2a700b5b1028c3ec7e134dedc842028c30d0e97df3c07",
+          "forced_fresh": false,
+          "freshness": "ttl",
+          "invalidated_entries": 0,
+          "learned_rules": [],
+          "mode": "optimized",
+          "ok": true,
+          "output_digest": "c91ab4f972f9d1f14ca33d56a57d86fb741da6a0c21d6466f54971708afaefc0",
+          "run_tool_requests": 4,
+          "shadow": null,
+          "source": "in_run",
+          "started_at": "2026-10-09T17:28:01.784479+00:00",
+          "tool_duration_ms": null,
+          "tool_name": "doc_read",
+          "tool_version": "1"
+        },
+        "id": 13,
+        "type": "tool_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.786656+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.18298400004823634,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 5,
+          "tool_calls_requested": [],
+          "usage": null
+        },
+        "id": 14,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.787592+00:00",
+        "call_id": null,
+        "data": {
+          "duration_ms": 17.1,
+          "error": null,
+          "final_answer": "Orbit costs 29 USD per user per month.",
+          "llm_calls": 5,
+          "llm_time_ms": 0.4,
+          "mode": "optimized",
+          "models": [
+            "scripted-reference"
+          ],
+          "reused_results": 2,
+          "run_id": "bb2a2cf7e88d46a09f0a9b376ff8c773",
+          "status": "success",
+          "steps": 5,
+          "tokens": {
+            "cached_input_tokens": null,
+            "calls_with_usage": 0,
+            "complete": false,
+            "input_tokens": null,
+            "output_tokens": null,
+            "thinking_tokens": null,
+            "total_tokens": null
+          },
+          "tool_decision_sequence": [
+            "executed_live",
+            "reused_in_run",
+            "executed_live",
+            "reused_in_run"
+          ],
+          "tool_decisions": {
+            "executed_live": 2,
+            "reused_in_run": 2
+          },
+          "tool_executions": 2,
+          "tool_requests": 4,
+          "tool_retries": 0,
+          "tool_time_ms": 5.6
+        },
+        "id": 15,
+        "type": "run.completed"
+      }
+    ],
+    "next_after_id": null,
+    "run_id": "bb2a2cf7e88d46a09f0a9b376ff8c773"
+  }
+}

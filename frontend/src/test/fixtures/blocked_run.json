@@ -1,0 +1,355 @@
+{
+  "details": {
+    "llm_calls": [
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.05763199999364588,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 1,
+        "thinking_tokens": null,
+        "tool_calls_requested": [
+          "send_notification"
+        ],
+        "total_tokens": null
+      },
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.049998999998024374,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 2,
+        "thinking_tokens": null,
+        "tool_calls_requested": [],
+        "total_tokens": null
+      }
+    ],
+    "run": {
+      "config_snapshot": {
+        "gemini_temperature": null,
+        "gemini_thinking_level": null,
+        "learned_rules_active": [],
+        "learned_rules_shadow": [],
+        "max_identical_requests": 3,
+        "max_steps": 12,
+        "max_tool_requests": 20,
+        "model_id": "scripted-reference",
+        "provider": "scripted",
+        "run_timeout_seconds": 90.0
+      },
+      "created_at": "2026-10-09T17:28:02.128556+00:00",
+      "ended_at": "2026-10-09T17:28:02.138881+00:00",
+      "error": null,
+      "estimated_cost": null,
+      "final_answer": "I could not send the notification (permission_denied).",
+      "finished": true,
+      "metrics": {
+        "cached_input_tokens": null,
+        "decision_counts": {
+          "blocked_permission": 1
+        },
+        "duration_ms": 5.969058999994559,
+        "input_tokens": null,
+        "llm_calls": 2,
+        "llm_time_ms": 0.10763099999167025,
+        "model_versions": [
+          "scripted-reference"
+        ],
+        "output_tokens": null,
+        "reused_results": 0,
+        "steps": 2,
+        "thinking_tokens": null,
+        "tool_executions": 0,
+        "tool_requests": 1,
+        "tool_retries": 0,
+        "tool_time_ms": 1.3765590000502925,
+        "total_tokens": null,
+        "usage_complete": false
+      },
+      "mode": "optimized",
+      "model_id": "scripted-reference",
+      "provider": "scripted",
+      "request_options": {
+        "allow_side_effects": false,
+        "fresh_tools": [],
+        "llm": "scripted",
+        "max_steps": null,
+        "max_tool_requests": null,
+        "mode": "optimized",
+        "scenario": {
+          "dataset": "core",
+          "task_id": "side_effect_not_permitted",
+          "version": "1"
+        },
+        "scripted_replies": null,
+        "session_id": "fx-blocked",
+        "tools": [
+          "send_notification"
+        ]
+      },
+      "run_id": "e3514e6a026f48efb673c95b2fc305bc",
+      "session_id": "fx-blocked",
+      "started_at": "2026-10-09T17:28:02.130479+00:00",
+      "status": "success",
+      "task": "Notify team:billing that the refund policy wording changed."
+    },
+    "tool_calls": [
+      {
+        "cache_age_seconds": null,
+        "cache_status": null,
+        "call_id": "scripted-call-11",
+        "decision": "blocked_permission",
+        "duration_ms": 1.3765590000502925,
+        "ended_at": "2026-10-09T17:28:02.136715+00:00",
+        "error_code": "permission_denied",
+        "error_message": "tool 'send_notification' can change data or is unclassified, and this task has not been given permission to use it",
+        "executed": false,
+        "executions": 0,
+        "forced_fresh": false,
+        "invalidated_entries": 0,
+        "learned_rules": null,
+        "ok": false,
+        "output": null,
+        "output_truncated": false,
+        "seq": 1,
+        "shadow": null,
+        "source": "none",
+        "started_at": "2026-10-09T17:28:02.135340+00:00",
+        "tool_duration_ms": null,
+        "tool_name": "send_notification"
+      }
+    ]
+  },
+  "run": {
+    "config_snapshot": {
+      "gemini_temperature": null,
+      "gemini_thinking_level": null,
+      "learned_rules_active": [],
+      "learned_rules_shadow": [],
+      "max_identical_requests": 3,
+      "max_steps": 12,
+      "max_tool_requests": 20,
+      "model_id": "scripted-reference",
+      "provider": "scripted",
+      "run_timeout_seconds": 90.0
+    },
+    "created_at": "2026-10-09T17:28:02.128556+00:00",
+    "ended_at": "2026-10-09T17:28:02.138881+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "I could not send the notification (permission_denied).",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "blocked_permission": 1
+      },
+      "duration_ms": 5.969058999994559,
+      "input_tokens": null,
+      "llm_calls": 2,
+      "llm_time_ms": 0.10763099999167025,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 0,
+      "steps": 2,
+      "thinking_tokens": null,
+      "tool_executions": 0,
+      "tool_requests": 1,
+      "tool_retries": 0,
+      "tool_time_ms": 1.3765590000502925,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "optimized",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "allow_side_effects": false,
+      "fresh_tools": [],
+      "llm": "scripted",
+      "max_steps": null,
+      "max_tool_requests": null,
+      "mode": "optimized",
+      "scenario": {
+        "dataset": "core",
+        "task_id": "side_effect_not_permitted",
+        "version": "1"
+      },
+      "scripted_replies": null,
+      "session_id": "fx-blocked",
+      "tools": [
+        "send_notification"
+      ]
+    },
+    "run_id": "e3514e6a026f48efb673c95b2fc305bc",
+    "session_id": "fx-blocked",
+    "started_at": "2026-10-09T17:28:02.130479+00:00",
+    "status": "success",
+    "task": "Notify team:billing that the refund policy wording changed."
+  },
+  "trace": {
+    "events": [
+      {
+        "at": "2026-10-09T17:28:02.132926+00:00",
+        "call_id": null,
+        "data": {
+          "max_steps": 12,
+          "max_tool_requests": 20,
+          "mode": "optimized",
+          "model_id": "scripted-reference",
+          "provider": "scripted",
+          "run_timeout_seconds": 90.0,
+          "task": "Notify team:billing that the refund policy wording changed.",
+          "tools_offered": [
+            "send_notification"
+          ]
+        },
+        "id": 41,
+        "type": "run.started"
+      },
+      {
+        "at": "2026-10-09T17:28:02.134266+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.05763199999364588,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 1,
+          "tool_calls_requested": [
+            "send_notification"
+          ],
+          "usage": null
+        },
+        "id": 42,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.135357+00:00",
+        "call_id": "scripted-call-11",
+        "data": {
+          "mode": "optimized",
+          "tool_name": "send_notification"
+        },
+        "id": 43,
+        "type": "tool_call.requested"
+      },
+      {
+        "at": "2026-10-09T17:28:02.136777+00:00",
+        "call_id": "scripted-call-11",
+        "data": {
+          "args": {
+            "idempotency_key": null,
+            "message": "Refund policy wording changed",
+            "recipient": "team:billing"
+          },
+          "cache_age_seconds": null,
+          "cache_status": null,
+          "data_time": 517.546861664,
+          "decision": "blocked_permission",
+          "duration_ms": 1.3765590000502925,
+          "effect": "side_effect",
+          "ended_at": "2026-10-09T17:28:02.136715+00:00",
+          "error_code": "permission_denied",
+          "error_message": "tool 'send_notification' can change data or is unclassified, and this task has not been given permission to use it",
+          "executed": false,
+          "executions": 0,
+          "fingerprint": null,
+          "forced_fresh": false,
+          "freshness": "live",
+          "invalidated_entries": 0,
+          "learned_rules": [],
+          "mode": "optimized",
+          "ok": false,
+          "output_digest": null,
+          "run_tool_requests": 1,
+          "shadow": null,
+          "source": "none",
+          "started_at": "2026-10-09T17:28:02.135340+00:00",
+          "tool_duration_ms": null,
+          "tool_name": "send_notification",
+          "tool_version": "1"
+        },
+        "id": 44,
+        "type": "tool_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.137967+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.049998999998024374,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 2,
+          "tool_calls_requested": [],
+          "usage": null
+        },
+        "id": 45,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.138935+00:00",
+        "call_id": null,
+        "data": {
+          "duration_ms": 6.0,
+          "error": null,
+          "final_answer": "I could not send the notification (permission_denied).",
+          "llm_calls": 2,
+          "llm_time_ms": 0.1,
+          "mode": "optimized",
+          "models": [
+            "scripted-reference"
+          ],
+          "reused_results": 0,
+          "run_id": "e3514e6a026f48efb673c95b2fc305bc",
+          "status": "success",
+          "steps": 2,
+          "tokens": {
+            "cached_input_tokens": null,
+            "calls_with_usage": 0,
+            "complete": false,
+            "input_tokens": null,
+            "output_tokens": null,
+            "thinking_tokens": null,
+            "total_tokens": null
+          },
+          "tool_decision_sequence": [
+            "blocked_permission"
+          ],
+          "tool_decisions": {
+            "blocked_permission": 1
+          },
+          "tool_executions": 0,
+          "tool_requests": 1,
+          "tool_retries": 0,
+          "tool_time_ms": 1.4
+        },
+        "id": 46,
+        "type": "run.completed"
+      }
+    ],
+    "next_after_id": null,
+    "run_id": "e3514e6a026f48efb673c95b2fc305bc"
+  }
+}

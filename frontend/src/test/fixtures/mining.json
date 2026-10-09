@@ -1,0 +1,582 @@
+{
+  "created_at": "2026-10-09T17:28:05.523802+00:00",
+  "evaluation_ids": [
+    "67b37bf99f2947ca809464408a25808b"
+  ],
+  "mining_id": "208650557b924c32a95ff3b1851e6b64",
+  "report": {
+    "candidates": [
+      {
+        "current_setting": {
+          "ttl_seconds": 3600.0
+        },
+        "evidence": {
+          "capped_by_ceiling": false,
+          "changed_repeats": 0,
+          "consistency": 1.0,
+          "distinct_runs": 0,
+          "evaluation_ids": [],
+          "max_unchanged_gap_seconds": 0.003842366999947444,
+          "min_changed_gap_seconds": null,
+          "observed_repeats": 4,
+          "repeat_count": 0,
+          "sample": [
+            {
+              "first_run_id": "e905aec4caa2422fb445824b65a09389",
+              "gap_seconds": 0.003842366999947444,
+              "run_id": "e905aec4caa2422fb445824b65a09389",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-67",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "doc_read"
+            },
+            {
+              "first_run_id": "356554a55b5f429a816c870934cfcbd8",
+              "gap_seconds": 0.002954940999984501,
+              "run_id": "356554a55b5f429a816c870934cfcbd8",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-21",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "doc_read"
+            },
+            {
+              "first_run_id": "95aebaf0798045b88fab19682422e2aa",
+              "gap_seconds": 0.0027980189998970673,
+              "run_id": "95aebaf0798045b88fab19682422e2aa",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-33",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "doc_read"
+            },
+            {
+              "first_run_id": "99521fa168ed4711a2a47a16cd7fc411",
+              "gap_seconds": 0.002432376000001568,
+              "run_id": "99521fa168ed4711a2a47a16cd7fc411",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-64",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "doc_read"
+            }
+          ],
+          "supporting_run_ids": [],
+          "supporting_task_ids": []
+        },
+        "kind": "ttl",
+        "proposed": false,
+        "proposed_setting": null,
+        "reasons": [
+          "every repeat already fell within the current TTL; a longer TTL would save nothing"
+        ],
+        "tool_name": "doc_read",
+        "tool_version": "1"
+      },
+      {
+        "current_setting": {
+          "ttl_seconds": 3600.0
+        },
+        "evidence": {
+          "capped_by_ceiling": false,
+          "changed_repeats": 0,
+          "consistency": 1.0,
+          "distinct_runs": 0,
+          "evaluation_ids": [],
+          "max_unchanged_gap_seconds": 0.004552254000032008,
+          "min_changed_gap_seconds": null,
+          "observed_repeats": 12,
+          "repeat_count": 0,
+          "sample": [
+            {
+              "first_run_id": "356554a55b5f429a816c870934cfcbd8",
+              "gap_seconds": 0.004552254000032008,
+              "run_id": "356554a55b5f429a816c870934cfcbd8",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-21",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "562ef67e4b684ea69bf55369b9ebc633",
+              "gap_seconds": 0.004333490000021811,
+              "run_id": "562ef67e4b684ea69bf55369b9ebc633",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-2",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "845466fdc00a488dbe34c1e8d7cf241e",
+              "gap_seconds": 0.0040271239998901365,
+              "run_id": "845466fdc00a488dbe34c1e8d7cf241e",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-28",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "562ef67e4b684ea69bf55369b9ebc633",
+              "gap_seconds": 0.003723731000036423,
+              "run_id": "562ef67e4b684ea69bf55369b9ebc633",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-2",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "845466fdc00a488dbe34c1e8d7cf241e",
+              "gap_seconds": 0.00339834500005054,
+              "run_id": "845466fdc00a488dbe34c1e8d7cf241e",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-28",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "4737e375ed32408eaea8662ca8be6279",
+              "gap_seconds": 0.003365878999943561,
+              "run_id": "4737e375ed32408eaea8662ca8be6279",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-55",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "99521fa168ed4711a2a47a16cd7fc411",
+              "gap_seconds": 0.0033621500000435844,
+              "run_id": "99521fa168ed4711a2a47a16cd7fc411",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-64",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "95aebaf0798045b88fab19682422e2aa",
+              "gap_seconds": 0.0033447939999859955,
+              "run_id": "95aebaf0798045b88fab19682422e2aa",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-33",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "66bd9d1679fb40b0a3080a4f86c368de",
+              "gap_seconds": 0.0031063449999919612,
+              "run_id": "66bd9d1679fb40b0a3080a4f86c368de",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-70",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "e905aec4caa2422fb445824b65a09389",
+              "gap_seconds": 0.0028394570000500607,
+              "run_id": "e905aec4caa2422fb445824b65a09389",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-67",
+              "task_id": "redundant_orbit_price",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "4737e375ed32408eaea8662ca8be6279",
+              "gap_seconds": 0.0026904679999688597,
+              "run_id": "4737e375ed32408eaea8662ca8be6279",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-55",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            },
+            {
+              "first_run_id": "66bd9d1679fb40b0a3080a4f86c368de",
+              "gap_seconds": 0.002614519000076143,
+              "run_id": "66bd9d1679fb40b0a3080a4f86c368de",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-70",
+              "task_id": "redundant_support_hours",
+              "tool_name": "kb_search"
+            }
+          ],
+          "supporting_run_ids": [],
+          "supporting_task_ids": []
+        },
+        "kind": "ttl",
+        "proposed": false,
+        "proposed_setting": null,
+        "reasons": [
+          "every repeat already fell within the current TTL; a longer TTL would save nothing"
+        ],
+        "tool_name": "kb_search",
+        "tool_version": "1"
+      },
+      {
+        "current_setting": {
+          "ttl_seconds": 60.0
+        },
+        "evidence": {
+          "capped_by_ceiling": false,
+          "changed_repeats": 8,
+          "consistency": 0.0,
+          "distinct_runs": 0,
+          "evaluation_ids": [],
+          "max_unchanged_gap_seconds": null,
+          "min_changed_gap_seconds": 120.00299005,
+          "observed_repeats": 8,
+          "repeat_count": 0,
+          "sample": [
+            {
+              "first_run_id": "8eeaabab762246958ab6d8d01e941e55",
+              "gap_seconds": 400.00436804699996,
+              "run_id": "8eeaabab762246958ab6d8d01e941e55",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-35",
+              "task_id": "freshness_price_changed",
+              "tool_name": "price_lookup"
+            },
+            {
+              "first_run_id": "f2821a78df0b4192b9f6e4288b09dcb8",
+              "gap_seconds": 400.0035554269999,
+              "run_id": "f2821a78df0b4192b9f6e4288b09dcb8",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-11",
+              "task_id": "freshness_price_changed",
+              "tool_name": "price_lookup"
+            },
+            {
+              "first_run_id": "adea3c713c7a4df9860bc719e2272f62",
+              "gap_seconds": 400.002573803,
+              "run_id": "adea3c713c7a4df9860bc719e2272f62",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-12",
+              "task_id": "freshness_price_changed",
+              "tool_name": "price_lookup"
+            },
+            {
+              "first_run_id": "5fdb36f187104580bac8883237b92c1c",
+              "gap_seconds": 400.002534998,
+              "run_id": "5fdb36f187104580bac8883237b92c1c",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-36",
+              "task_id": "freshness_price_changed",
+              "tool_name": "price_lookup"
+            },
+            {
+              "first_run_id": "abb6b408039b436bba86e2272ca8e7fa",
+              "gap_seconds": 120.00380195000002,
+              "run_id": "abb6b408039b436bba86e2272ca8e7fa",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-46",
+              "task_id": "freshness_stale_unchanged",
+              "tool_name": "price_lookup"
+            },
+            {
+              "first_run_id": "a8849aaeb1ae4b74949fb1436ab7ad3a",
+              "gap_seconds": 120.00347173800003,
+              "run_id": "a8849aaeb1ae4b74949fb1436ab7ad3a",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-45",
+              "task_id": "freshness_stale_unchanged",
+              "tool_name": "price_lookup"
+            },
+            {
+              "first_run_id": "122ebedd72d3429cbf9e0cbf44535630",
+              "gap_seconds": 120.00333948600007,
+              "run_id": "122ebedd72d3429cbf9e0cbf44535630",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-13",
+              "task_id": "freshness_stale_unchanged",
+              "tool_name": "price_lookup"
+            },
+            {
+              "first_run_id": "e6b2160aa37c4d589386ee528a7fd0ec",
+              "gap_seconds": 120.00299005,
+              "run_id": "e6b2160aa37c4d589386ee528a7fd0ec",
+              "same_output": false,
+              "session_id": "eval-67b37bf9-14",
+              "task_id": "freshness_stale_unchanged",
+              "tool_name": "price_lookup"
+            }
+          ],
+          "supporting_run_ids": [],
+          "supporting_task_ids": []
+        },
+        "kind": "ttl",
+        "proposed": false,
+        "proposed_setting": null,
+        "reasons": [
+          "the output changed at every gap longer than the current TTL"
+        ],
+        "tool_name": "price_lookup",
+        "tool_version": "1"
+      },
+      {
+        "current_setting": {
+          "ttl_seconds": 300.0
+        },
+        "evidence": {
+          "capped_by_ceiling": false,
+          "changed_repeats": 0,
+          "consistency": 1.0,
+          "distinct_runs": 8,
+          "evaluation_ids": [
+            "67b37bf99f2947ca809464408a25808b"
+          ],
+          "max_unchanged_gap_seconds": 600.0035174200001,
+          "min_changed_gap_seconds": null,
+          "observed_repeats": 8,
+          "repeat_count": 8,
+          "sample": [
+            {
+              "first_run_id": "1dad0ff1e7834d91a52d1848abfed993",
+              "gap_seconds": 600.0035174200001,
+              "run_id": "1dad0ff1e7834d91a52d1848abfed993",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-47",
+              "task_id": "recheck_ticket_status",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "45bdbaf9235342a19786d97b296abbed",
+              "gap_seconds": 600.0032015030001,
+              "run_id": "45bdbaf9235342a19786d97b296abbed",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-5",
+              "task_id": "recheck_ticket_status",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "8bd44e74d7294c358e24eddb31fdcb26",
+              "gap_seconds": 600.003083047,
+              "run_id": "8bd44e74d7294c358e24eddb31fdcb26",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-48",
+              "task_id": "recheck_ticket_status",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "35496b0a756e4e0da8ffd1c6fb2a36ac",
+              "gap_seconds": 600.0029709109999,
+              "run_id": "35496b0a756e4e0da8ffd1c6fb2a36ac",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-6",
+              "task_id": "recheck_ticket_status",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "726339709c44431fa428735a91d1a1a4",
+              "gap_seconds": 480.00360875700005,
+              "run_id": "726339709c44431fa428735a91d1a1a4",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-4",
+              "task_id": "recheck_ticket_owner",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "0e3d595badc4421b997cf0f07d34a7f0",
+              "gap_seconds": 480.003312529,
+              "run_id": "0e3d595badc4421b997cf0f07d34a7f0",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-39",
+              "task_id": "recheck_ticket_owner",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "476d8a00686c4c839cad2316a39af482",
+              "gap_seconds": 480.0032131720001,
+              "run_id": "476d8a00686c4c839cad2316a39af482",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-3",
+              "task_id": "recheck_ticket_owner",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "610ef4c9e67842f9941212c9f458f170",
+              "gap_seconds": 480.003011873,
+              "run_id": "610ef4c9e67842f9941212c9f458f170",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-40",
+              "task_id": "recheck_ticket_owner",
+              "tool_name": "record_read"
+            }
+          ],
+          "supporting_run_ids": [
+            "0e3d595badc4421b997cf0f07d34a7f0",
+            "1dad0ff1e7834d91a52d1848abfed993",
+            "35496b0a756e4e0da8ffd1c6fb2a36ac",
+            "45bdbaf9235342a19786d97b296abbed",
+            "476d8a00686c4c839cad2316a39af482",
+            "610ef4c9e67842f9941212c9f458f170",
+            "726339709c44431fa428735a91d1a1a4",
+            "8bd44e74d7294c358e24eddb31fdcb26"
+          ],
+          "supporting_task_ids": [
+            "recheck_ticket_owner",
+            "recheck_ticket_status"
+          ]
+        },
+        "kind": "ttl",
+        "proposed": true,
+        "proposed_setting": {
+          "ttl_seconds": 600.0
+        },
+        "reasons": [
+          "8 repeats 300-600 s apart all returned identical output, in 8 different runs"
+        ],
+        "tool_name": "record_read",
+        "tool_version": "1"
+      },
+      {
+        "current_setting": {
+          "cache_scope": "run"
+        },
+        "evidence": {
+          "capped_by_ceiling": false,
+          "changed_repeats": 0,
+          "consistency": 1.0,
+          "distinct_runs": 8,
+          "evaluation_ids": [
+            "67b37bf99f2947ca809464408a25808b"
+          ],
+          "max_unchanged_gap_seconds": 0.010870589999967706,
+          "min_changed_gap_seconds": null,
+          "observed_repeats": 8,
+          "repeat_count": 8,
+          "sample": [
+            {
+              "first_run_id": "4963eb60f2d54c9bb7d0c1eb5f885bce",
+              "gap_seconds": 0.010870589999967706,
+              "run_id": "1f90bb9550444777ad1a75cfa897ed1c",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-62",
+              "task_id": "control_ticket_title",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "e04cf2bea3744576b5b41369a68dffe4",
+              "gap_seconds": 0.010656470999947487,
+              "run_id": "b16507a180b3426ab3aa4bc36bb0e237",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-74",
+              "task_id": "control_ticket_title",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "5d79f6a7f0cb422bbd287e3a5f5b3291",
+              "gap_seconds": 0.010653877999970973,
+              "run_id": "83cd3e7d6965489c9986f024a9b8a7df",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-75",
+              "task_id": "control_ticket_owner",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "f21f6ee627734d31a8e4629cb12e1702",
+              "gap_seconds": 0.010424410000041462,
+              "run_id": "7103a2a85c6e49779e14e275fa6e15f6",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-53",
+              "task_id": "control_ticket_owner",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "853b68ad1fa44c8ab008efd0e8e5df89",
+              "gap_seconds": 0.010328423000032672,
+              "run_id": "d7ac50ac892f4ec89a26fb7b662cd10d",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-61",
+              "task_id": "control_ticket_title",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "7d299ce7ead64922a7eb0aaf2f0c08e1",
+              "gap_seconds": 0.010083701999974437,
+              "run_id": "de90250d910845aa882fb533d2ff0262",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-76",
+              "task_id": "control_ticket_owner",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "c7a70a131ebe4cf99ef3fe853406dd05",
+              "gap_seconds": 0.009947575999945002,
+              "run_id": "da78a3d3c2ff4a7a8a2dd38c352c7486",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-54",
+              "task_id": "control_ticket_owner",
+              "tool_name": "record_read"
+            },
+            {
+              "first_run_id": "2d2056224fd34675bb57b286cc945c45",
+              "gap_seconds": 0.009791234999966036,
+              "run_id": "8c27d688435c489f8d61da4e8bfe8813",
+              "same_output": true,
+              "session_id": "eval-67b37bf9-73",
+              "task_id": "control_ticket_title",
+              "tool_name": "record_read"
+            }
+          ],
+          "supporting_run_ids": [
+            "1f90bb9550444777ad1a75cfa897ed1c",
+            "2d2056224fd34675bb57b286cc945c45",
+            "4963eb60f2d54c9bb7d0c1eb5f885bce",
+            "5d79f6a7f0cb422bbd287e3a5f5b3291",
+            "7103a2a85c6e49779e14e275fa6e15f6",
+            "7d299ce7ead64922a7eb0aaf2f0c08e1",
+            "83cd3e7d6965489c9986f024a9b8a7df",
+            "853b68ad1fa44c8ab008efd0e8e5df89",
+            "8c27d688435c489f8d61da4e8bfe8813",
+            "b16507a180b3426ab3aa4bc36bb0e237",
+            "c7a70a131ebe4cf99ef3fe853406dd05",
+            "d7ac50ac892f4ec89a26fb7b662cd10d",
+            "da78a3d3c2ff4a7a8a2dd38c352c7486",
+            "de90250d910845aa882fb533d2ff0262",
+            "e04cf2bea3744576b5b41369a68dffe4",
+            "f21f6ee627734d31a8e4629cb12e1702"
+          ],
+          "supporting_task_ids": [
+            "control_ticket_owner",
+            "control_ticket_title"
+          ]
+        },
+        "kind": "cache_scope",
+        "proposed": true,
+        "proposed_setting": {
+          "cache_scope": "session"
+        },
+        "reasons": [
+          "8 identical requests in a later run of the same session all returned identical output, in 8 different sessions",
+          "results would still never be shared between sessions"
+        ],
+        "tool_name": "record_read",
+        "tool_version": "1"
+      }
+    ],
+    "created_rule_ids": [
+      "ef418a526d5f4ccc9640ec0fee88b62f",
+      "911a675d585140b48e0ce02733db0b19"
+    ],
+    "duplicates": [],
+    "excluded": {
+      "a tool call failed": 8
+    },
+    "not_eligible": [
+      {
+        "reason": "side_effect tool: always executes (fixed safety rule)",
+        "tool_name": "record_update"
+      },
+      {
+        "reason": "side_effect tool: always executes (fixed safety rule)",
+        "tool_name": "send_notification"
+      }
+    ],
+    "runs_examined": 76,
+    "runs_used": 68,
+    "thresholds": {
+      "min_distinct_runs": 3,
+      "min_support": 5,
+      "required_consistency": 1.0
+    }
+  },
+  "thresholds": {
+    "min_distinct_runs": 3,
+    "min_support": 5,
+    "required_consistency": 1.0
+  }
+}

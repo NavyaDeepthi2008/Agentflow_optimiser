@@ -1,0 +1,11 @@
+{
+  "active_evaluations": 0,
+  "active_learned_rules": 0,
+  "active_runs": 0,
+  "active_validations": 0,
+  "database": "ok",
+  "gemini_configured": false,
+  "gemini_model": null,
+  "pricing_configured": false,
+  "status": "ok"
+}

@@ -1,0 +1,3402 @@
+{
+  "components": {
+    "schemas": {
+      "ActiveRuleRef": {
+        "properties": {
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "setting": {
+            "additionalProperties": true,
+            "title": "Setting",
+            "type": "object"
+          }
+        },
+        "required": [
+          "rule_id",
+          "kind",
+          "setting"
+        ],
+        "title": "ActiveRuleRef",
+        "type": "object"
+      },
+      "ApproveRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "approved_by": {
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Approved By",
+            "type": "string"
+          },
+          "confirm": {
+            "description": "Must be true: the approver has reviewed the evidence and validation.",
+            "title": "Confirm",
+            "type": "boolean"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          }
+        },
+        "required": [
+          "approved_by",
+          "confirm"
+        ],
+        "title": "ApproveRequest",
+        "type": "object"
+      },
+      "CacheCleared": {
+        "properties": {
+          "cleared_entries": {
+            "title": "Cleared Entries",
+            "type": "integer"
+          },
+          "session_id": {
+            "title": "Session Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_id",
+          "cleared_entries"
+        ],
+        "title": "CacheCleared",
+        "type": "object"
+      },
+      "CostEstimate": {
+        "properties": {
+          "currency": {
+            "title": "Currency",
+            "type": "string"
+          },
+          "llm": {
+            "title": "Llm",
+            "type": "number"
+          },
+          "note": {
+            "default": "LLM tokens only; tool costs are reported in evaluations.",
+            "title": "Note",
+            "type": "string"
+          },
+          "pricing_retrieved_on": {
+            "title": "Pricing Retrieved On",
+            "type": "string"
+          },
+          "pricing_source": {
+            "title": "Pricing Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "llm",
+          "currency",
+          "pricing_source",
+          "pricing_retrieved_on"
+        ],
+        "title": "CostEstimate",
+        "type": "object"
+      },
+      "DatasetOut": {
+        "properties": {
+          "checksum": {
+            "title": "Checksum",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetTaskOut"
+            },
+            "title": "Tasks",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "version",
+          "checksum",
+          "description",
+          "tasks"
+        ],
+        "title": "DatasetOut",
+        "type": "object"
+      },
+      "DatasetTaskOut": {
+        "properties": {
+          "allow_side_effects": {
+            "title": "Allow Side Effects",
+            "type": "boolean"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "scripted_only": {
+            "title": "Scripted Only",
+            "type": "boolean"
+          },
+          "split": {
+            "title": "Split",
+            "type": "string"
+          },
+          "task": {
+            "title": "Task",
+            "type": "string"
+          },
+          "tools": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tools",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "split",
+          "task",
+          "tools",
+          "allow_side_effects",
+          "scripted_only"
+        ],
+        "title": "DatasetTaskOut",
+        "type": "object"
+      },
+      "DisableRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "disabled_by": {
+            "default": "dashboard user",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Disabled By",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason"
+        ],
+        "title": "DisableRequest",
+        "type": "object"
+      },
+      "EvaluationConfig": {
+        "additionalProperties": false,
+        "properties": {
+          "categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Categories"
+          },
+          "dataset": {
+            "default": "core",
+            "pattern": "^[a-z][a-z0-9_]{0,40}$",
+            "title": "Dataset",
+            "type": "string"
+          },
+          "dataset_version": {
+            "default": "1",
+            "pattern": "^[0-9a-z]{1,10}$",
+            "title": "Dataset Version",
+            "type": "string"
+          },
+          "llm": {
+            "default": "scripted",
+            "enum": [
+              "scripted",
+              "gemini"
+            ],
+            "title": "Llm",
+            "type": "string"
+          },
+          "max_steps": {
+            "default": 12,
+            "maximum": 50.0,
+            "minimum": 1.0,
+            "title": "Max Steps",
+            "type": "integer"
+          },
+          "max_tool_requests": {
+            "default": 20,
+            "maximum": 200.0,
+            "minimum": 1.0,
+            "title": "Max Tool Requests",
+            "type": "integer"
+          },
+          "modes": {
+            "items": {
+              "$ref": "#/components/schemas/GatewayMode"
+            },
+            "minItems": 1,
+            "title": "Modes",
+            "type": "array"
+          },
+          "repetitions": {
+            "default": 1,
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Repetitions",
+            "type": "integer"
+          },
+          "run_timeout_seconds": {
+            "default": 90.0,
+            "exclusiveMinimum": 0.0,
+            "maximum": 600.0,
+            "title": "Run Timeout Seconds",
+            "type": "number"
+          },
+          "seed": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Seed",
+            "type": "integer"
+          },
+          "split": {
+            "anyOf": [
+              {
+                "enum": [
+                  "train",
+                  "heldout"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Split"
+          },
+          "task_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Task Ids"
+          },
+          "warm_cache": {
+            "default": false,
+            "title": "Warm Cache",
+            "type": "boolean"
+          },
+          "warm_gap_seconds": {
+            "default": 0.0,
+            "maximum": 3600.0,
+            "minimum": 0.0,
+            "title": "Warm Gap Seconds",
+            "type": "number"
+          }
+        },
+        "title": "EvaluationConfig",
+        "type": "object"
+      },
+      "EvaluationCreated": {
+        "properties": {
+          "evaluation_id": {
+            "title": "Evaluation Id",
+            "type": "string"
+          },
+          "links": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Links",
+            "type": "object"
+          },
+          "planned_runs": {
+            "title": "Planned Runs",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "evaluation_id",
+          "status",
+          "planned_runs",
+          "links"
+        ],
+        "title": "EvaluationCreated",
+        "type": "object"
+      },
+      "EvaluationOut": {
+        "properties": {
+          "completed_runs": {
+            "title": "Completed Runs",
+            "type": "integer"
+          },
+          "config": {
+            "additionalProperties": true,
+            "title": "Config",
+            "type": "object"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "dataset": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Dataset",
+            "type": "object"
+          },
+          "ended_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ended At"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "evaluation_id": {
+            "title": "Evaluation Id",
+            "type": "string"
+          },
+          "finished": {
+            "title": "Finished",
+            "type": "boolean"
+          },
+          "planned_runs": {
+            "title": "Planned Runs",
+            "type": "integer"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "report": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "evaluation_id",
+          "status",
+          "finished",
+          "provider",
+          "dataset",
+          "config",
+          "planned_runs",
+          "completed_runs",
+          "created_at",
+          "started_at",
+          "ended_at",
+          "error",
+          "report"
+        ],
+        "title": "EvaluationOut",
+        "type": "object"
+      },
+      "EvaluationRunOut": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "correct": {
+            "title": "Correct",
+            "type": "boolean"
+          },
+          "failed_checks": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Failed Checks",
+            "type": "array"
+          },
+          "final_answer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Final Answer"
+          },
+          "grade_checks": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Grade Checks",
+            "type": "array"
+          },
+          "latency_ms": {
+            "title": "Latency Ms",
+            "type": "number"
+          },
+          "metrics": {
+            "additionalProperties": true,
+            "title": "Metrics",
+            "type": "object"
+          },
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "phase": {
+            "title": "Phase",
+            "type": "string"
+          },
+          "repetition": {
+            "title": "Repetition",
+            "type": "integer"
+          },
+          "run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Run Id"
+          },
+          "seq": {
+            "title": "Seq",
+            "type": "integer"
+          },
+          "split": {
+            "title": "Split",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "task_id": {
+            "title": "Task Id",
+            "type": "string"
+          },
+          "tool_executions": {
+            "title": "Tool Executions",
+            "type": "integer"
+          },
+          "tool_requests": {
+            "title": "Tool Requests",
+            "type": "integer"
+          },
+          "warmup_correct": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Warmup Correct"
+          },
+          "warmup_run_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Warmup Run Id"
+          }
+        },
+        "required": [
+          "seq",
+          "task_id",
+          "category",
+          "split",
+          "mode",
+          "phase",
+          "repetition",
+          "run_id",
+          "status",
+          "correct",
+          "failed_checks",
+          "grade_checks",
+          "final_answer",
+          "tool_requests",
+          "tool_executions",
+          "latency_ms",
+          "metrics"
+        ],
+        "title": "EvaluationRunOut",
+        "type": "object"
+      },
+      "GatewayMode": {
+        "enum": [
+          "passthrough",
+          "optimized"
+        ],
+        "title": "GatewayMode",
+        "type": "string"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "Health": {
+        "properties": {
+          "active_evaluations": {
+            "title": "Active Evaluations",
+            "type": "integer"
+          },
+          "active_learned_rules": {
+            "default": 0,
+            "title": "Active Learned Rules",
+            "type": "integer"
+          },
+          "active_runs": {
+            "title": "Active Runs",
+            "type": "integer"
+          },
+          "active_validations": {
+            "default": 0,
+            "title": "Active Validations",
+            "type": "integer"
+          },
+          "database": {
+            "title": "Database",
+            "type": "string"
+          },
+          "gemini_configured": {
+            "title": "Gemini Configured",
+            "type": "boolean"
+          },
+          "gemini_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gemini Model"
+          },
+          "pricing_configured": {
+            "title": "Pricing Configured",
+            "type": "boolean"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "database",
+          "gemini_configured",
+          "gemini_model",
+          "pricing_configured",
+          "active_runs",
+          "active_evaluations"
+        ],
+        "title": "Health",
+        "type": "object"
+      },
+      "LLMCallOut": {
+        "properties": {
+          "cached_input_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cached Input Tokens"
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Code"
+          },
+          "finish_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finish Reason"
+          },
+          "input_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Input Tokens"
+          },
+          "latency_ms": {
+            "title": "Latency Ms",
+            "type": "number"
+          },
+          "model_id": {
+            "title": "Model Id",
+            "type": "string"
+          },
+          "model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Version"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "output_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Output Tokens"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "step": {
+            "title": "Step",
+            "type": "integer"
+          },
+          "thinking_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thinking Tokens"
+          },
+          "tool_calls_requested": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tool Calls Requested",
+            "type": "array"
+          },
+          "total_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Tokens"
+          }
+        },
+        "required": [
+          "step",
+          "provider",
+          "model_id",
+          "model_version",
+          "ok",
+          "error_code",
+          "finish_reason",
+          "latency_ms",
+          "input_tokens",
+          "output_tokens",
+          "thinking_tokens",
+          "cached_input_tokens",
+          "total_tokens",
+          "tool_calls_requested"
+        ],
+        "title": "LLMCallOut",
+        "type": "object"
+      },
+      "MineRequest": {
+        "additionalProperties": false,
+        "description": "Mine proposals from completed evaluations of one dataset version.",
+        "properties": {
+          "dataset": {
+            "default": "core",
+            "pattern": "^[a-z][a-z0-9_]{0,40}$",
+            "title": "Dataset",
+            "type": "string"
+          },
+          "dataset_version": {
+            "default": "2",
+            "pattern": "^[0-9a-z]{1,10}$",
+            "title": "Dataset Version",
+            "type": "string"
+          },
+          "evaluation_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "pattern": "^[0-9a-f]{32}$",
+                  "type": "string"
+                },
+                "maxItems": 50,
+                "minItems": 1,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evaluation Ids"
+          },
+          "thresholds": {
+            "$ref": "#/components/schemas/Thresholds"
+          }
+        },
+        "title": "MineRequest",
+        "type": "object"
+      },
+      "MiningOut": {
+        "properties": {
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "evaluation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Evaluation Ids",
+            "type": "array"
+          },
+          "mining_id": {
+            "title": "Mining Id",
+            "type": "string"
+          },
+          "report": {
+            "additionalProperties": true,
+            "title": "Report",
+            "type": "object"
+          },
+          "thresholds": {
+            "additionalProperties": true,
+            "title": "Thresholds",
+            "type": "object"
+          }
+        },
+        "required": [
+          "mining_id",
+          "created_at",
+          "evaluation_ids",
+          "thresholds",
+          "report"
+        ],
+        "title": "MiningOut",
+        "type": "object"
+      },
+      "RuleDetailOut": {
+        "properties": {
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/RuleEventOut"
+            },
+            "title": "Events",
+            "type": "array"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/RuleOut"
+          },
+          "shadow_live": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ShadowCounts"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "validations": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationOut"
+            },
+            "title": "Validations",
+            "type": "array"
+          }
+        },
+        "required": [
+          "rule",
+          "events",
+          "validations",
+          "shadow_live"
+        ],
+        "title": "RuleDetailOut",
+        "type": "object"
+      },
+      "RuleEventOut": {
+        "properties": {
+          "actor": {
+            "title": "Actor",
+            "type": "string"
+          },
+          "at": {
+            "title": "At",
+            "type": "string"
+          },
+          "from_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Status"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "to_status": {
+            "title": "To Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "at",
+          "from_status",
+          "to_status",
+          "actor",
+          "note"
+        ],
+        "title": "RuleEventOut",
+        "type": "object"
+      },
+      "RuleOut": {
+        "properties": {
+          "approval_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approval Note"
+          },
+          "approved_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved At"
+          },
+          "approved_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approved By"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "current_setting": {
+            "additionalProperties": true,
+            "title": "Current Setting",
+            "type": "object"
+          },
+          "dataset": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Dataset",
+            "type": "object"
+          },
+          "disabled_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Disabled At"
+          },
+          "evidence": {
+            "additionalProperties": true,
+            "title": "Evidence",
+            "type": "object"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "latest_validation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Validation Id"
+          },
+          "mining_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mining Id"
+          },
+          "proposed_setting": {
+            "additionalProperties": true,
+            "title": "Proposed Setting",
+            "type": "object"
+          },
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "status_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Reason"
+          },
+          "tool_name": {
+            "title": "Tool Name",
+            "type": "string"
+          },
+          "tool_version": {
+            "title": "Tool Version",
+            "type": "string"
+          },
+          "updated_at": {
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "rule_id",
+          "status",
+          "status_reason",
+          "created_at",
+          "updated_at",
+          "tool_name",
+          "tool_version",
+          "kind",
+          "current_setting",
+          "proposed_setting",
+          "evidence",
+          "mining_id",
+          "dataset",
+          "latest_validation_id",
+          "approved_at",
+          "approved_by",
+          "approval_note",
+          "disabled_at"
+        ],
+        "title": "RuleOut",
+        "type": "object"
+      },
+      "RunCreated": {
+        "properties": {
+          "links": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Links",
+            "type": "object"
+          },
+          "run_id": {
+            "title": "Run Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "status",
+          "links"
+        ],
+        "title": "RunCreated",
+        "type": "object"
+      },
+      "RunDetailsOut": {
+        "properties": {
+          "llm_calls": {
+            "items": {
+              "$ref": "#/components/schemas/LLMCallOut"
+            },
+            "title": "Llm Calls",
+            "type": "array"
+          },
+          "run": {
+            "$ref": "#/components/schemas/RunOut"
+          },
+          "tool_calls": {
+            "items": {
+              "$ref": "#/components/schemas/ToolCallOut"
+            },
+            "title": "Tool Calls",
+            "type": "array"
+          }
+        },
+        "required": [
+          "run",
+          "llm_calls",
+          "tool_calls"
+        ],
+        "title": "RunDetailsOut",
+        "type": "object"
+      },
+      "RunMetrics": {
+        "properties": {
+          "cached_input_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cached Input Tokens"
+          },
+          "decision_counts": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Decision Counts"
+          },
+          "duration_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Ms"
+          },
+          "input_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Input Tokens"
+          },
+          "llm_calls": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llm Calls"
+          },
+          "llm_time_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llm Time Ms"
+          },
+          "model_versions": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Versions"
+          },
+          "output_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Output Tokens"
+          },
+          "reused_results": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reused Results"
+          },
+          "steps": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Steps"
+          },
+          "thinking_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Thinking Tokens"
+          },
+          "tool_executions": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Executions"
+          },
+          "tool_requests": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Requests"
+          },
+          "tool_retries": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Retries"
+          },
+          "tool_time_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Time Ms"
+          },
+          "total_tokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Tokens"
+          },
+          "usage_complete": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Usage Complete"
+          }
+        },
+        "required": [
+          "steps",
+          "llm_calls",
+          "tool_requests",
+          "tool_executions",
+          "reused_results",
+          "tool_retries",
+          "input_tokens",
+          "output_tokens",
+          "thinking_tokens",
+          "cached_input_tokens",
+          "total_tokens",
+          "usage_complete",
+          "duration_ms",
+          "llm_time_ms",
+          "tool_time_ms",
+          "decision_counts",
+          "model_versions"
+        ],
+        "title": "RunMetrics",
+        "type": "object"
+      },
+      "RunOut": {
+        "properties": {
+          "config_snapshot": {
+            "additionalProperties": true,
+            "title": "Config Snapshot",
+            "type": "object"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "ended_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ended At"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "estimated_cost": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CostEstimate"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "final_answer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Final Answer"
+          },
+          "finished": {
+            "title": "Finished",
+            "type": "boolean"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RunMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "model_id": {
+            "title": "Model Id",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          },
+          "request_options": {
+            "additionalProperties": true,
+            "title": "Request Options",
+            "type": "object"
+          },
+          "run_id": {
+            "title": "Run Id",
+            "type": "string"
+          },
+          "session_id": {
+            "title": "Session Id",
+            "type": "string"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "task": {
+            "title": "Task",
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "session_id",
+          "task",
+          "mode",
+          "provider",
+          "model_id",
+          "status",
+          "finished",
+          "final_answer",
+          "error",
+          "created_at",
+          "started_at",
+          "ended_at",
+          "metrics",
+          "estimated_cost",
+          "request_options",
+          "config_snapshot"
+        ],
+        "title": "RunOut",
+        "type": "object"
+      },
+      "RunRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "allow_side_effects": {
+            "default": false,
+            "title": "Allow Side Effects",
+            "type": "boolean"
+          },
+          "fresh_tools": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 50,
+            "title": "Fresh Tools",
+            "type": "array"
+          },
+          "llm": {
+            "default": "gemini",
+            "enum": [
+              "gemini",
+              "scripted"
+            ],
+            "title": "Llm",
+            "type": "string"
+          },
+          "max_steps": {
+            "anyOf": [
+              {
+                "maximum": 50.0,
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Steps"
+          },
+          "max_tool_requests": {
+            "anyOf": [
+              {
+                "maximum": 200.0,
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Tool Requests"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/GatewayMode",
+            "default": "passthrough"
+          },
+          "scenario": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ScenarioRef"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scripted_replies": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ScriptedReply"
+                },
+                "maxItems": 30,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scripted Replies"
+          },
+          "session_id": {
+            "default": "default",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "task": {
+            "anyOf": [
+              {
+                "maxLength": 4000,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Task"
+          },
+          "tools": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 50,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tools"
+          }
+        },
+        "title": "RunRequest",
+        "type": "object"
+      },
+      "ScenarioRef": {
+        "additionalProperties": false,
+        "description": "Run a task from an evaluation dataset. The task text, tools and permissions\ncome from the dataset; with llm='scripted' its server-side reference script is\nused. Expected answers are never sent to the agent or the client.",
+        "properties": {
+          "dataset": {
+            "default": "core",
+            "pattern": "^[a-z][a-z0-9_]{0,40}$",
+            "title": "Dataset",
+            "type": "string"
+          },
+          "task_id": {
+            "pattern": "^[a-z0-9_]{3,64}$",
+            "title": "Task Id",
+            "type": "string"
+          },
+          "version": {
+            "default": "1",
+            "pattern": "^[0-9a-z]{1,10}$",
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id"
+        ],
+        "title": "ScenarioRef",
+        "type": "object"
+      },
+      "ScriptedReply": {
+        "additionalProperties": false,
+        "description": "One canned LLM reply: either a final text, or one or more tool calls.",
+        "properties": {
+          "text": {
+            "anyOf": [
+              {
+                "maxLength": 4000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text"
+          },
+          "tool_calls": {
+            "items": {
+              "$ref": "#/components/schemas/ScriptedToolCall"
+            },
+            "maxItems": 8,
+            "title": "Tool Calls",
+            "type": "array"
+          }
+        },
+        "title": "ScriptedReply",
+        "type": "object"
+      },
+      "ScriptedToolCall": {
+        "additionalProperties": false,
+        "properties": {
+          "args": {
+            "additionalProperties": true,
+            "title": "Args",
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "ScriptedToolCall",
+        "type": "object"
+      },
+      "ShadowCounts": {
+        "properties": {
+          "matched": {
+            "title": "Matched",
+            "type": "integer"
+          },
+          "mismatched": {
+            "title": "Mismatched",
+            "type": "integer"
+          },
+          "would_reuse": {
+            "title": "Would Reuse",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "would_reuse",
+          "matched",
+          "mismatched"
+        ],
+        "title": "ShadowCounts",
+        "type": "object"
+      },
+      "ShadowRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "title": "ShadowRequest",
+        "type": "object"
+      },
+      "Thresholds": {
+        "additionalProperties": false,
+        "properties": {
+          "min_distinct_runs": {
+            "default": 3,
+            "description": "The support must come from at least this many different runs (or sessions).",
+            "maximum": 1000.0,
+            "minimum": 2.0,
+            "title": "Min Distinct Runs",
+            "type": "integer"
+          },
+          "min_support": {
+            "default": 5,
+            "description": "Minimum repeated requests that support the proposal.",
+            "maximum": 1000.0,
+            "minimum": 3.0,
+            "title": "Min Support",
+            "type": "integer"
+          },
+          "required_consistency": {
+            "const": 1.0,
+            "default": 1.0,
+            "title": "Required Consistency",
+            "type": "number"
+          }
+        },
+        "title": "Thresholds",
+        "type": "object"
+      },
+      "ToolCallOut": {
+        "properties": {
+          "cache_age_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cache Age Seconds"
+          },
+          "cache_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cache Status"
+          },
+          "call_id": {
+            "title": "Call Id",
+            "type": "string"
+          },
+          "decision": {
+            "title": "Decision",
+            "type": "string"
+          },
+          "duration_ms": {
+            "title": "Duration Ms",
+            "type": "number"
+          },
+          "ended_at": {
+            "title": "Ended At",
+            "type": "string"
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Code"
+          },
+          "error_message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Message"
+          },
+          "executed": {
+            "title": "Executed",
+            "type": "boolean"
+          },
+          "executions": {
+            "title": "Executions",
+            "type": "integer"
+          },
+          "forced_fresh": {
+            "title": "Forced Fresh",
+            "type": "boolean"
+          },
+          "invalidated_entries": {
+            "title": "Invalidated Entries",
+            "type": "integer"
+          },
+          "learned_rules": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Learned Rules"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "output": {
+            "title": "Output"
+          },
+          "output_truncated": {
+            "title": "Output Truncated",
+            "type": "boolean"
+          },
+          "seq": {
+            "title": "Seq",
+            "type": "integer"
+          },
+          "shadow": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shadow"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "started_at": {
+            "title": "Started At",
+            "type": "string"
+          },
+          "tool_duration_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Duration Ms"
+          },
+          "tool_name": {
+            "title": "Tool Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "seq",
+          "call_id",
+          "tool_name",
+          "decision",
+          "ok",
+          "executed",
+          "executions",
+          "source",
+          "cache_status",
+          "cache_age_seconds",
+          "forced_fresh",
+          "invalidated_entries",
+          "error_code",
+          "error_message",
+          "output",
+          "output_truncated",
+          "duration_ms",
+          "tool_duration_ms",
+          "started_at",
+          "ended_at"
+        ],
+        "title": "ToolCallOut",
+        "type": "object"
+      },
+      "ToolOut": {
+        "properties": {
+          "cache_scope": {
+            "title": "Cache Scope",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "effect": {
+            "title": "Effect",
+            "type": "string"
+          },
+          "effective_cache_scope": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective Cache Scope"
+          },
+          "effective_ttl_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Effective Ttl Seconds"
+          },
+          "freshness": {
+            "title": "Freshness",
+            "type": "string"
+          },
+          "learned_rules": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ActiveRuleRef"
+            },
+            "title": "Learned Rules",
+            "type": "array"
+          },
+          "learning_eligible": {
+            "default": false,
+            "title": "Learning Eligible",
+            "type": "boolean"
+          },
+          "max_ttl_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Ttl Seconds"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "parameters": {
+            "additionalProperties": true,
+            "title": "Parameters",
+            "type": "object"
+          },
+          "requires_permission": {
+            "title": "Requires Permission",
+            "type": "boolean"
+          },
+          "timeout_seconds": {
+            "title": "Timeout Seconds",
+            "type": "number"
+          },
+          "ttl_seconds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ttl Seconds"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "parameters",
+          "effect",
+          "freshness",
+          "ttl_seconds",
+          "cache_scope",
+          "requires_permission",
+          "timeout_seconds"
+        ],
+        "title": "ToolOut",
+        "type": "object"
+      },
+      "ToolsOut": {
+        "properties": {
+          "tools": {
+            "items": {
+              "$ref": "#/components/schemas/ToolOut"
+            },
+            "title": "Tools",
+            "type": "array"
+          }
+        },
+        "required": [
+          "tools"
+        ],
+        "title": "ToolsOut",
+        "type": "object"
+      },
+      "TraceEventOut": {
+        "properties": {
+          "at": {
+            "title": "At",
+            "type": "string"
+          },
+          "call_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Call Id"
+          },
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "at",
+          "call_id",
+          "data"
+        ],
+        "title": "TraceEventOut",
+        "type": "object"
+      },
+      "TraceOut": {
+        "properties": {
+          "events": {
+            "items": {
+              "$ref": "#/components/schemas/TraceEventOut"
+            },
+            "title": "Events",
+            "type": "array"
+          },
+          "next_after_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next After Id"
+          },
+          "run_id": {
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id",
+          "events",
+          "next_after_id"
+        ],
+        "title": "TraceOut",
+        "type": "object"
+      },
+      "ValidationConfig": {
+        "additionalProperties": false,
+        "properties": {
+          "llm": {
+            "default": "scripted",
+            "enum": [
+              "scripted",
+              "gemini"
+            ],
+            "title": "Llm",
+            "type": "string"
+          },
+          "repetitions": {
+            "default": 2,
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Repetitions",
+            "type": "integer"
+          },
+          "seed": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Seed",
+            "type": "integer"
+          }
+        },
+        "title": "ValidationConfig",
+        "type": "object"
+      },
+      "ValidationCreated": {
+        "properties": {
+          "links": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Links",
+            "type": "object"
+          },
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "validation_id": {
+            "title": "Validation Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "validation_id",
+          "rule_id",
+          "status",
+          "links"
+        ],
+        "title": "ValidationCreated",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "ValidationOut": {
+        "properties": {
+          "base_rule_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Base Rule Ids",
+            "type": "array"
+          },
+          "config": {
+            "additionalProperties": true,
+            "title": "Config",
+            "type": "object"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          },
+          "ended_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ended At"
+          },
+          "error_message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Message"
+          },
+          "finished": {
+            "title": "Finished",
+            "type": "boolean"
+          },
+          "result": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Result"
+          },
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "validation_id": {
+            "title": "Validation Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "validation_id",
+          "rule_id",
+          "status",
+          "finished",
+          "created_at",
+          "ended_at",
+          "config",
+          "base_rule_ids",
+          "result",
+          "error_message"
+        ],
+        "title": "ValidationOut",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "AgentFlow Optimizer API",
+    "version": "0.7.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/datasets/{name}/{version}": {
+      "get": {
+        "description": "Task list WITHOUT expected answers or scripts (those stay server-side).",
+        "operationId": "get_dataset_datasets__name___version__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-z][a-z0-9_]{0,40}$",
+              "title": "Name",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "version",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-z]{1,10}$",
+              "title": "Version",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Dataset"
+      }
+    },
+    "/evaluations": {
+      "get": {
+        "operationId": "list_evaluations_evaluations_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EvaluationOut"
+                  },
+                  "title": "Response List Evaluations Evaluations Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Evaluations"
+      },
+      "post": {
+        "operationId": "create_evaluation_evaluations_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EvaluationConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvaluationCreated"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Evaluation"
+      }
+    },
+    "/evaluations/{evaluation_id}": {
+      "get": {
+        "operationId": "get_evaluation_evaluations__evaluation_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluation_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Evaluation Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvaluationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Evaluation"
+      }
+    },
+    "/evaluations/{evaluation_id}/runs": {
+      "get": {
+        "operationId": "get_evaluation_runs_evaluations__evaluation_id__runs_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "evaluation_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Evaluation Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EvaluationRunOut"
+                  },
+                  "title": "Response Get Evaluation Runs Evaluations  Evaluation Id  Runs Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Evaluation Runs"
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health"
+      }
+    },
+    "/learning/minings": {
+      "get": {
+        "operationId": "list_minings_learning_minings_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 50,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MiningOut"
+                  },
+                  "title": "Response List Minings Learning Minings Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Minings"
+      },
+      "post": {
+        "description": "Mine proposals from completed evaluations (training split only).",
+        "operationId": "create_mining_learning_minings_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MineRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MiningOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Mining"
+      }
+    },
+    "/learning/minings/{mining_id}": {
+      "get": {
+        "operationId": "get_mining_learning_minings__mining_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mining_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Mining Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MiningOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Mining"
+      }
+    },
+    "/learning/rules": {
+      "get": {
+        "operationId": "list_rules_learning_rules_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 20,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RuleOut"
+                  },
+                  "title": "Response List Rules Learning Rules Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Rules"
+      }
+    },
+    "/learning/rules/{rule_id}": {
+      "get": {
+        "operationId": "get_rule_learning_rules__rule_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rule_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Rule Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Rule"
+      }
+    },
+    "/learning/rules/{rule_id}/approve": {
+      "post": {
+        "operationId": "approve_rule_learning_rules__rule_id__approve_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rule_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Rule Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApproveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Approve Rule"
+      }
+    },
+    "/learning/rules/{rule_id}/disable": {
+      "post": {
+        "operationId": "disable_rule_learning_rules__rule_id__disable_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rule_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Rule Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisableRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Disable Rule"
+      }
+    },
+    "/learning/rules/{rule_id}/shadow": {
+      "post": {
+        "operationId": "set_shadow_learning_rules__rule_id__shadow_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rule_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Rule Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShadowRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Shadow"
+      }
+    },
+    "/learning/rules/{rule_id}/validations": {
+      "post": {
+        "operationId": "validate_rule_learning_rules__rule_id__validations_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rule_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Rule Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidationConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationCreated"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Validate Rule"
+      }
+    },
+    "/learning/validations/{validation_id}": {
+      "get": {
+        "operationId": "get_validation_learning_validations__validation_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "validation_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Validation Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Validation"
+      }
+    },
+    "/runs": {
+      "get": {
+        "operationId": "list_runs_runs_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "session_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 30,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 200,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RunOut"
+                  },
+                  "title": "Response List Runs Runs Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Runs"
+      },
+      "post": {
+        "operationId": "create_run_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunCreated"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Run"
+      }
+    },
+    "/runs/{run_id}": {
+      "get": {
+        "operationId": "get_run_runs__run_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Run"
+      }
+    },
+    "/runs/{run_id}/details": {
+      "get": {
+        "operationId": "get_run_details_runs__run_id__details_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunDetailsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Run Details"
+      }
+    },
+    "/runs/{run_id}/trace": {
+      "get": {
+        "operationId": "get_trace_runs__run_id__trace_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "run_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "after_id",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "After Id",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 500,
+              "maximum": 2000,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TraceOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Trace"
+      }
+    },
+    "/sessions/{session_id}/cache": {
+      "delete": {
+        "operationId": "clear_cache_sessions__session_id__cache_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "pattern": "^[A-Za-z0-9_-]{1,64}$",
+              "title": "Session Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CacheCleared"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Clear Cache"
+      }
+    },
+    "/tools": {
+      "get": {
+        "operationId": "list_tools_tools_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Tools"
+      }
+    }
+  }
+}

@@ -1,0 +1,707 @@
+{
+  "completed_runs": 36,
+  "config": {
+    "categories": [
+      "redundant",
+      "freshness",
+      "control"
+    ],
+    "dataset": "core",
+    "dataset_version": "1",
+    "llm": "scripted",
+    "max_steps": 12,
+    "max_tool_requests": 20,
+    "modes": [
+      "passthrough",
+      "optimized"
+    ],
+    "repetitions": 1,
+    "run_timeout_seconds": 90.0,
+    "seed": 0,
+    "split": null,
+    "task_ids": null,
+    "warm_cache": true,
+    "warm_gap_seconds": 0.0
+  },
+  "created_at": "2026-10-09T17:28:02.154424+00:00",
+  "dataset": {
+    "checksum": "40f4d5dbe8d05c24c2fe975130909af33d8647fdb516ee14e1598069a9b99926",
+    "name": "core",
+    "version": "1"
+  },
+  "ended_at": "2026-10-09T17:28:03.132214+00:00",
+  "error": null,
+  "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+  "finished": true,
+  "planned_runs": 36,
+  "provider": "scripted",
+  "report": {
+    "config": {
+      "categories": [
+        "redundant",
+        "freshness",
+        "control"
+      ],
+      "dataset": "core",
+      "dataset_version": "1",
+      "llm": "scripted",
+      "max_steps": 12,
+      "max_tool_requests": 20,
+      "modes": [
+        "passthrough",
+        "optimized"
+      ],
+      "repetitions": 1,
+      "run_timeout_seconds": 90.0,
+      "seed": 0,
+      "split": null,
+      "task_ids": null,
+      "warm_cache": true,
+      "warm_gap_seconds": 0.0
+    },
+    "dataset": {
+      "checksum": "40f4d5dbe8d05c24c2fe975130909af33d8647fdb516ee14e1598069a9b99926",
+      "name": "core",
+      "version": "1"
+    },
+    "evaluation_id": "40686a3a2c3a4d119c0a88202ed90a04",
+    "fairness": {
+      "cold_cache": "new session, mock world and gateway for every measured run",
+      "execution": "sequential (no overlapping runs)",
+      "order": "interleaved; shuffled with seed 0",
+      "same_for_all_modes": [
+        "dataset",
+        "llm client",
+        "system prompt",
+        "tool declarations",
+        "permissions",
+        "agent limits",
+        "gateway limits",
+        "retry policy"
+      ]
+    },
+    "improvements": [],
+    "label": "MOCK - scripted reference agent with deterministic mock tools. Shows what the optimizer does to tool calls; says nothing about real model quality. Savings reflect the redundancy written into this dataset's scripts.",
+    "learned_rules": [],
+    "model_id": "scripted-reference",
+    "notes": [
+      "p95 uses the nearest-rank method; with few runs it equals the slowest run.",
+      "Token and cost figures are null when the provider did not report usage or no pricing is configured."
+    ],
+    "per_task": [
+      {
+        "category": "control",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 5.479368999999679,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 1
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 7.279507000021113,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 1
+        },
+        "phase": "cold",
+        "task_id": "control_annual_price"
+      },
+      {
+        "category": "control",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 5.681880999986788,
+          "runs": 1,
+          "tool_executions_median": 0,
+          "tool_requests_median": 1
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 5.02682800004095,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 1
+        },
+        "phase": "warm",
+        "task_id": "control_annual_price"
+      },
+      {
+        "category": "control",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 11.977777999959471,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 9.769146999929035,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "phase": "cold",
+        "task_id": "control_flight_class"
+      },
+      {
+        "category": "control",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 7.365651999975853,
+          "runs": 1,
+          "tool_executions_median": 0,
+          "tool_requests_median": 2
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 9.020730999964144,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "phase": "warm",
+        "task_id": "control_flight_class"
+      },
+      {
+        "category": "control",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 4.80946799996218,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 1
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 5.097956999975395,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 1
+        },
+        "phase": "cold",
+        "task_id": "control_record_status"
+      },
+      {
+        "category": "control",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 5.83174999997027,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 1
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 5.004139999982726,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 1
+        },
+        "phase": "warm",
+        "task_id": "control_record_status"
+      },
+      {
+        "category": "freshness",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 10.358091000057357,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 11.788195000008272,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "phase": "cold",
+        "task_id": "freshness_price_changed"
+      },
+      {
+        "category": "freshness",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 14.461922000009508,
+          "runs": 1,
+          "tool_executions_median": 3,
+          "tool_requests_median": 3
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 38.133753000010984,
+          "runs": 1,
+          "tool_executions_median": 3,
+          "tool_requests_median": 3
+        },
+        "phase": "cold",
+        "task_id": "freshness_read_after_write"
+      },
+      {
+        "category": "freshness",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 8.931071999995766,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 9.346575999984452,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "phase": "cold",
+        "task_id": "freshness_stale_unchanged"
+      },
+      {
+        "category": "freshness",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 9.870355000089148,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 2
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 11.126719999992929,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 2
+        },
+        "phase": "cold",
+        "task_id": "freshness_within_ttl"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 16.569321000019954,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 4
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 21.64489099993716,
+          "runs": 1,
+          "tool_executions_median": 4,
+          "tool_requests_median": 4
+        },
+        "phase": "cold",
+        "task_id": "redundant_keystone_total"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 10.455692000050476,
+          "runs": 1,
+          "tool_executions_median": 0,
+          "tool_requests_median": 4
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 14.249975999973685,
+          "runs": 1,
+          "tool_executions_median": 4,
+          "tool_requests_median": 4
+        },
+        "phase": "warm",
+        "task_id": "redundant_keystone_total"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 18.368416999919646,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 4
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 14.632036000080006,
+          "runs": 1,
+          "tool_executions_median": 4,
+          "tool_requests_median": 4
+        },
+        "phase": "cold",
+        "task_id": "redundant_orbit_price"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 14.490629999954763,
+          "runs": 1,
+          "tool_executions_median": 0,
+          "tool_requests_median": 4
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 14.030386999934308,
+          "runs": 1,
+          "tool_executions_median": 4,
+          "tool_requests_median": 4
+        },
+        "phase": "warm",
+        "task_id": "redundant_orbit_price"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 17.090040000084628,
+          "runs": 1,
+          "tool_executions_median": 2,
+          "tool_requests_median": 4
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 19.745741999940947,
+          "runs": 1,
+          "tool_executions_median": 4,
+          "tool_requests_median": 4
+        },
+        "phase": "cold",
+        "task_id": "redundant_refund_window"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 12.720893000050637,
+          "runs": 1,
+          "tool_executions_median": 0,
+          "tool_requests_median": 4
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 14.151799999922332,
+          "runs": 1,
+          "tool_executions_median": 4,
+          "tool_requests_median": 4
+        },
+        "phase": "warm",
+        "task_id": "redundant_refund_window"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 13.82614999999987,
+          "runs": 1,
+          "tool_executions_median": 1,
+          "tool_requests_median": 3
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 14.21219199994539,
+          "runs": 1,
+          "tool_executions_median": 3,
+          "tool_requests_median": 3
+        },
+        "phase": "cold",
+        "task_id": "redundant_support_hours"
+      },
+      {
+        "category": "redundant",
+        "optimized": {
+          "correct": 1,
+          "latency_ms_median": 9.288334999951076,
+          "runs": 1,
+          "tool_executions_median": 0,
+          "tool_requests_median": 3
+        },
+        "passthrough": {
+          "correct": 1,
+          "latency_ms_median": 10.52915499997198,
+          "runs": 1,
+          "tool_executions_median": 3,
+          "tool_requests_median": 3
+        },
+        "phase": "warm",
+        "task_id": "redundant_support_hours"
+      }
+    ],
+    "phases": {
+      "cold": {
+        "by_category": {
+          "control": {
+            "optimized": {
+              "accuracy": 1.0,
+              "runs": 3,
+              "tool_executions": 4,
+              "tool_requests": 4
+            },
+            "passthrough": {
+              "accuracy": 1.0,
+              "runs": 3,
+              "tool_executions": 4,
+              "tool_requests": 4
+            }
+          },
+          "freshness": {
+            "optimized": {
+              "accuracy": 1.0,
+              "runs": 4,
+              "tool_executions": 8,
+              "tool_requests": 9
+            },
+            "passthrough": {
+              "accuracy": 1.0,
+              "runs": 4,
+              "tool_executions": 9,
+              "tool_requests": 9
+            }
+          },
+          "redundant": {
+            "optimized": {
+              "accuracy": 1.0,
+              "runs": 4,
+              "tool_executions": 7,
+              "tool_requests": 15
+            },
+            "passthrough": {
+              "accuracy": 1.0,
+              "runs": 4,
+              "tool_executions": 15,
+              "tool_requests": 15
+            }
+          }
+        },
+        "comparison": {
+          "accuracy_change": 0.0,
+          "cost_change_pct": null,
+          "latency_median_change_pct": 1.6082445187839685,
+          "latency_p95_change_pct": -51.83160440590687,
+          "llm_calls_change_pct": 0.0,
+          "tokens_change_pct": null,
+          "tool_executions_change_pct": -32.142857142857146,
+          "tool_requests_change_pct": 0.0
+        },
+        "modes": {
+          "optimized": {
+            "accuracy": 1.0,
+            "cache_hits": 0,
+            "correct": 11,
+            "gateway_overhead_ms": {
+              "median": 2.352811999912774,
+              "p95": 4.914267000003747
+            },
+            "latency_ms": {
+              "max": 18.368416999919646,
+              "median": 11.977777999959471,
+              "min": 4.80946799996218,
+              "p95": 18.368416999919646
+            },
+            "llm_calls": 39,
+            "llm_cost": null,
+            "reused_in_run": 9,
+            "runs": 11,
+            "shared_in_flight": 0,
+            "status_counts": {
+              "success": 11
+            },
+            "tokens": {
+              "complete": false,
+              "input": null,
+              "output": null,
+              "runs_with_usage": 0,
+              "thinking": null,
+              "total": null
+            },
+            "tool_cost": null,
+            "tool_executions": 19,
+            "tool_requests": 28,
+            "tool_retries": 0
+          },
+          "passthrough": {
+            "accuracy": 1.0,
+            "cache_hits": 0,
+            "correct": 11,
+            "gateway_overhead_ms": {
+              "median": 2.4774060000254394,
+              "p95": 14.940693999960786
+            },
+            "latency_ms": {
+              "max": 38.133753000010984,
+              "median": 11.788195000008272,
+              "min": 5.097956999975395,
+              "p95": 38.133753000010984
+            },
+            "llm_calls": 39,
+            "llm_cost": null,
+            "reused_in_run": 0,
+            "runs": 11,
+            "shared_in_flight": 0,
+            "status_counts": {
+              "success": 11
+            },
+            "tokens": {
+              "complete": false,
+              "input": null,
+              "output": null,
+              "runs_with_usage": 0,
+              "thinking": null,
+              "total": null
+            },
+            "tool_cost": null,
+            "tool_executions": 28,
+            "tool_requests": 28,
+            "tool_retries": 0
+          }
+        }
+      },
+      "warm": {
+        "by_category": {
+          "control": {
+            "optimized": {
+              "accuracy": 1.0,
+              "runs": 3,
+              "tool_executions": 1,
+              "tool_requests": 4
+            },
+            "passthrough": {
+              "accuracy": 1.0,
+              "runs": 3,
+              "tool_executions": 4,
+              "tool_requests": 4
+            }
+          },
+          "redundant": {
+            "optimized": {
+              "accuracy": 1.0,
+              "runs": 4,
+              "tool_executions": 0,
+              "tool_requests": 15
+            },
+            "passthrough": {
+              "accuracy": 1.0,
+              "runs": 4,
+              "tool_executions": 15,
+              "tool_requests": 15
+            }
+          }
+        },
+        "comparison": {
+          "accuracy_change": 0.0,
+          "cost_change_pct": null,
+          "latency_median_change_pct": -11.78461139592119,
+          "latency_p95_change_pct": 1.6888028441698562,
+          "llm_calls_change_pct": 0.0,
+          "tokens_change_pct": null,
+          "tool_executions_change_pct": -94.73684210526315,
+          "tool_requests_change_pct": 0.0
+        },
+        "modes": {
+          "optimized": {
+            "accuracy": 1.0,
+            "cache_hits": 18,
+            "correct": 7,
+            "gateway_overhead_ms": {
+              "median": 2.40442700010135,
+              "p95": 3.941921999853548
+            },
+            "latency_ms": {
+              "max": 14.490629999954763,
+              "median": 9.288334999951076,
+              "min": 5.681880999986788,
+              "p95": 14.490629999954763
+            },
+            "llm_calls": 26,
+            "llm_cost": null,
+            "reused_in_run": 0,
+            "runs": 7,
+            "shared_in_flight": 0,
+            "status_counts": {
+              "success": 7
+            },
+            "tokens": {
+              "complete": false,
+              "input": null,
+              "output": null,
+              "runs_with_usage": 0,
+              "thinking": null,
+              "total": null
+            },
+            "tool_cost": null,
+            "tool_executions": 1,
+            "tool_requests": 19,
+            "tool_retries": 0
+          },
+          "passthrough": {
+            "accuracy": 1.0,
+            "cache_hits": 0,
+            "correct": 7,
+            "gateway_overhead_ms": {
+              "median": 2.247342000146091,
+              "p95": 3.2963739998876918
+            },
+            "latency_ms": {
+              "max": 14.249975999973685,
+              "median": 10.52915499997198,
+              "min": 5.004139999982726,
+              "p95": 14.249975999973685
+            },
+            "llm_calls": 26,
+            "llm_cost": null,
+            "reused_in_run": 0,
+            "runs": 7,
+            "shared_in_flight": 0,
+            "status_counts": {
+              "success": 7
+            },
+            "tokens": {
+              "complete": false,
+              "input": null,
+              "output": null,
+              "runs_with_usage": 0,
+              "thinking": null,
+              "total": null
+            },
+            "tool_cost": null,
+            "tool_executions": 19,
+            "tool_requests": 19,
+            "tool_retries": 0
+          }
+        }
+      }
+    },
+    "pricing": null,
+    "provider": "scripted",
+    "regressions": [],
+    "skipped_tasks": [
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "freshness_price_changed"
+      },
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "freshness_within_ttl"
+      },
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "freshness_stale_unchanged"
+      },
+      {
+        "phase": "warm",
+        "reason": "its warm-up would change the world or the simulated time",
+        "task_id": "freshness_read_after_write"
+      }
+    ]
+  },
+  "started_at": "2026-10-09T17:28:02.158553+00:00",
+  "status": "completed"
+}

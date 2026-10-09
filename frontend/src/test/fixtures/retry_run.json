@@ -1,0 +1,494 @@
+{
+  "details": {
+    "llm_calls": [
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.06220899990694306,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 1,
+        "thinking_tokens": null,
+        "tool_calls_requested": [
+          "kb_search"
+        ],
+        "total_tokens": null
+      },
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.07927900003323884,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 2,
+        "thinking_tokens": null,
+        "tool_calls_requested": [
+          "doc_read"
+        ],
+        "total_tokens": null
+      },
+      {
+        "cached_input_tokens": null,
+        "error_code": null,
+        "finish_reason": "STOP",
+        "input_tokens": null,
+        "latency_ms": 0.24457999995775026,
+        "model_id": "scripted-reference",
+        "model_version": null,
+        "ok": true,
+        "output_tokens": null,
+        "provider": "scripted",
+        "step": 3,
+        "thinking_tokens": null,
+        "tool_calls_requested": [],
+        "total_tokens": null
+      }
+    ],
+    "run": {
+      "config_snapshot": {
+        "gemini_temperature": null,
+        "gemini_thinking_level": null,
+        "learned_rules_active": [],
+        "learned_rules_shadow": [],
+        "max_identical_requests": 3,
+        "max_steps": 12,
+        "max_tool_requests": 20,
+        "model_id": "scripted-reference",
+        "provider": "scripted",
+        "run_timeout_seconds": 90.0
+      },
+      "created_at": "2026-10-09T17:28:01.877262+00:00",
+      "ended_at": "2026-10-09T17:28:02.111920+00:00",
+      "error": null,
+      "estimated_cost": null,
+      "final_answer": "The daily meal allowance is 1500 INR.",
+      "finished": true,
+      "metrics": {
+        "cached_input_tokens": null,
+        "decision_counts": {
+          "executed_live": 2
+        },
+        "duration_ms": 230.42195300001822,
+        "input_tokens": null,
+        "llm_calls": 3,
+        "llm_time_ms": 0.38606799989793217,
+        "model_versions": [
+          "scripted-reference"
+        ],
+        "output_tokens": null,
+        "reused_results": 0,
+        "steps": 3,
+        "thinking_tokens": null,
+        "tool_executions": 3,
+        "tool_requests": 2,
+        "tool_retries": 1,
+        "tool_time_ms": 220.77259799993953,
+        "total_tokens": null,
+        "usage_complete": false
+      },
+      "mode": "optimized",
+      "model_id": "scripted-reference",
+      "provider": "scripted",
+      "request_options": {
+        "allow_side_effects": false,
+        "fresh_tools": [],
+        "llm": "scripted",
+        "max_steps": null,
+        "max_tool_requests": null,
+        "mode": "optimized",
+        "scenario": {
+          "dataset": "core",
+          "task_id": "failure_transient_outage",
+          "version": "1"
+        },
+        "scripted_replies": null,
+        "session_id": "fx-retry",
+        "tools": [
+          "kb_search",
+          "doc_read"
+        ]
+      },
+      "run_id": "9916e01a12c549ef866697de73b67b7f",
+      "session_id": "fx-retry",
+      "started_at": "2026-10-09T17:28:01.878997+00:00",
+      "status": "success",
+      "task": "What is the daily meal allowance during business travel?"
+    },
+    "tool_calls": [
+      {
+        "cache_age_seconds": null,
+        "cache_status": "miss",
+        "call_id": "scripted-call-9",
+        "decision": "executed_live",
+        "duration_ms": 218.9225729999862,
+        "ended_at": "2026-10-09T17:28:02.103110+00:00",
+        "error_code": null,
+        "error_message": null,
+        "executed": true,
+        "executions": 2,
+        "forced_fresh": false,
+        "invalidated_entries": 0,
+        "learned_rules": null,
+        "ok": true,
+        "output": {
+          "results": [
+            {
+              "doc_id": "kb-006",
+              "score": 5,
+              "snippet": "Employees book economy class for flights shorter than 6 hours. The daily meal allowance during business travel is 1500 INR. Hotel bookings n",
+              "title": "Travel policy"
+            }
+          ]
+        },
+        "output_truncated": false,
+        "seq": 1,
+        "shadow": null,
+        "source": "live",
+        "started_at": "2026-10-09T17:28:01.884182+00:00",
+        "tool_duration_ms": 1.017248000039217,
+        "tool_name": "kb_search"
+      },
+      {
+        "cache_age_seconds": null,
+        "cache_status": "miss",
+        "call_id": "scripted-call-10",
+        "decision": "executed_live",
+        "duration_ms": 1.850024999953348,
+        "ended_at": "2026-10-09T17:28:02.108714+00:00",
+        "error_code": null,
+        "error_message": null,
+        "executed": true,
+        "executions": 1,
+        "forced_fresh": false,
+        "invalidated_entries": 0,
+        "learned_rules": null,
+        "ok": true,
+        "output": {
+          "body": "Employees book economy class for flights shorter than 6 hours. The daily meal allowance during business travel is 1500 INR. Hotel bookings need manager approval.",
+          "doc_id": "kb-006",
+          "title": "Travel policy"
+        },
+        "output_truncated": false,
+        "seq": 2,
+        "shadow": null,
+        "source": "live",
+        "started_at": "2026-10-09T17:28:02.106857+00:00",
+        "tool_duration_ms": 0.30052299996441434,
+        "tool_name": "doc_read"
+      }
+    ]
+  },
+  "run": {
+    "config_snapshot": {
+      "gemini_temperature": null,
+      "gemini_thinking_level": null,
+      "learned_rules_active": [],
+      "learned_rules_shadow": [],
+      "max_identical_requests": 3,
+      "max_steps": 12,
+      "max_tool_requests": 20,
+      "model_id": "scripted-reference",
+      "provider": "scripted",
+      "run_timeout_seconds": 90.0
+    },
+    "created_at": "2026-10-09T17:28:01.877262+00:00",
+    "ended_at": "2026-10-09T17:28:02.111920+00:00",
+    "error": null,
+    "estimated_cost": null,
+    "final_answer": "The daily meal allowance is 1500 INR.",
+    "finished": true,
+    "metrics": {
+      "cached_input_tokens": null,
+      "decision_counts": {
+        "executed_live": 2
+      },
+      "duration_ms": 230.42195300001822,
+      "input_tokens": null,
+      "llm_calls": 3,
+      "llm_time_ms": 0.38606799989793217,
+      "model_versions": [
+        "scripted-reference"
+      ],
+      "output_tokens": null,
+      "reused_results": 0,
+      "steps": 3,
+      "thinking_tokens": null,
+      "tool_executions": 3,
+      "tool_requests": 2,
+      "tool_retries": 1,
+      "tool_time_ms": 220.77259799993953,
+      "total_tokens": null,
+      "usage_complete": false
+    },
+    "mode": "optimized",
+    "model_id": "scripted-reference",
+    "provider": "scripted",
+    "request_options": {
+      "allow_side_effects": false,
+      "fresh_tools": [],
+      "llm": "scripted",
+      "max_steps": null,
+      "max_tool_requests": null,
+      "mode": "optimized",
+      "scenario": {
+        "dataset": "core",
+        "task_id": "failure_transient_outage",
+        "version": "1"
+      },
+      "scripted_replies": null,
+      "session_id": "fx-retry",
+      "tools": [
+        "kb_search",
+        "doc_read"
+      ]
+    },
+    "run_id": "9916e01a12c549ef866697de73b67b7f",
+    "session_id": "fx-retry",
+    "started_at": "2026-10-09T17:28:01.878997+00:00",
+    "status": "success",
+    "task": "What is the daily meal allowance during business travel?"
+  },
+  "trace": {
+    "events": [
+      {
+        "at": "2026-10-09T17:28:01.881514+00:00",
+        "call_id": null,
+        "data": {
+          "max_steps": 12,
+          "max_tool_requests": 20,
+          "mode": "optimized",
+          "model_id": "scripted-reference",
+          "provider": "scripted",
+          "run_timeout_seconds": 90.0,
+          "task": "What is the daily meal allowance during business travel?",
+          "tools_offered": [
+            "doc_read",
+            "kb_search"
+          ]
+        },
+        "id": 31,
+        "type": "run.started"
+      },
+      {
+        "at": "2026-10-09T17:28:01.882937+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.06220899990694306,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 1,
+          "tool_calls_requested": [
+            "kb_search"
+          ],
+          "usage": null
+        },
+        "id": 32,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:01.884201+00:00",
+        "call_id": "scripted-call-9",
+        "data": {
+          "mode": "optimized",
+          "tool_name": "kb_search"
+        },
+        "id": 33,
+        "type": "tool_call.requested"
+      },
+      {
+        "at": "2026-10-09T17:28:01.885889+00:00",
+        "call_id": "scripted-call-9",
+        "data": {
+          "attempt": 1,
+          "error_code": "transient",
+          "retry_blocked_because": null,
+          "retry_delay_seconds": 0.21377687406100196,
+          "tool_name": "kb_search",
+          "will_retry": true
+        },
+        "id": 34,
+        "type": "tool_call.attempt_failed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.103193+00:00",
+        "call_id": "scripted-call-9",
+        "data": {
+          "args": {
+            "limit": 3,
+            "query": "travel meal allowance"
+          },
+          "cache_age_seconds": null,
+          "cache_status": "miss",
+          "data_time": 517.295704369,
+          "decision": "executed_live",
+          "duration_ms": 218.9225729999862,
+          "effect": "read_only",
+          "ended_at": "2026-10-09T17:28:02.103110+00:00",
+          "error_code": null,
+          "error_message": null,
+          "executed": true,
+          "executions": 2,
+          "fingerprint": "a6ef2932a9ed9b121a23e84ed70ff538635b7bddb7497679df925253bb246965",
+          "forced_fresh": false,
+          "freshness": "ttl",
+          "invalidated_entries": 0,
+          "learned_rules": [],
+          "mode": "optimized",
+          "ok": true,
+          "output_digest": "e3f15db0f5c0a0db5cbee4cfb421b85f2210de7f9a549cd3819a8d083c75720d",
+          "run_tool_requests": 1,
+          "shadow": null,
+          "source": "live",
+          "started_at": "2026-10-09T17:28:01.884182+00:00",
+          "tool_duration_ms": 1.017248000039217,
+          "tool_name": "kb_search",
+          "tool_version": "1"
+        },
+        "id": 35,
+        "type": "tool_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.105329+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.07927900003323884,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 2,
+          "tool_calls_requested": [
+            "doc_read"
+          ],
+          "usage": null
+        },
+        "id": 36,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.106880+00:00",
+        "call_id": "scripted-call-10",
+        "data": {
+          "mode": "optimized",
+          "tool_name": "doc_read"
+        },
+        "id": 37,
+        "type": "tool_call.requested"
+      },
+      {
+        "at": "2026-10-09T17:28:02.108796+00:00",
+        "call_id": "scripted-call-10",
+        "data": {
+          "args": {
+            "doc_id": "kb-006"
+          },
+          "cache_age_seconds": null,
+          "cache_status": "miss",
+          "data_time": 517.518381363,
+          "decision": "executed_live",
+          "duration_ms": 1.850024999953348,
+          "effect": "read_only",
+          "ended_at": "2026-10-09T17:28:02.108714+00:00",
+          "error_code": null,
+          "error_message": null,
+          "executed": true,
+          "executions": 1,
+          "fingerprint": "bf4b6c542a07c77c4b63d1f217897abf97e0bfd9caf20009ba555498690ae2d7",
+          "forced_fresh": false,
+          "freshness": "ttl",
+          "invalidated_entries": 0,
+          "learned_rules": [],
+          "mode": "optimized",
+          "ok": true,
+          "output_digest": "4cc1dbb73087a570ea054cd31b4409d5d810e4bde51f4619ec68427befc8673b",
+          "run_tool_requests": 2,
+          "shadow": null,
+          "source": "live",
+          "started_at": "2026-10-09T17:28:02.106857+00:00",
+          "tool_duration_ms": 0.30052299996441434,
+          "tool_name": "doc_read",
+          "tool_version": "1"
+        },
+        "id": 38,
+        "type": "tool_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.110554+00:00",
+        "call_id": null,
+        "data": {
+          "error_code": null,
+          "finish_reason": "STOP",
+          "latency_ms": 0.24457999995775026,
+          "model_id": "scripted-reference",
+          "model_version": null,
+          "ok": true,
+          "provider": "scripted",
+          "step": 3,
+          "tool_calls_requested": [],
+          "usage": null
+        },
+        "id": 39,
+        "type": "llm_call.completed"
+      },
+      {
+        "at": "2026-10-09T17:28:02.111986+00:00",
+        "call_id": null,
+        "data": {
+          "duration_ms": 230.4,
+          "error": null,
+          "final_answer": "The daily meal allowance is 1500 INR.",
+          "llm_calls": 3,
+          "llm_time_ms": 0.4,
+          "mode": "optimized",
+          "models": [
+            "scripted-reference"
+          ],
+          "reused_results": 0,
+          "run_id": "9916e01a12c549ef866697de73b67b7f",
+          "status": "success",
+          "steps": 3,
+          "tokens": {
+            "cached_input_tokens": null,
+            "calls_with_usage": 0,
+            "complete": false,
+            "input_tokens": null,
+            "output_tokens": null,
+            "thinking_tokens": null,
+            "total_tokens": null
+          },
+          "tool_decision_sequence": [
+            "executed_live",
+            "executed_live"
+          ],
+          "tool_decisions": {
+            "executed_live": 2
+          },
+          "tool_executions": 3,
+          "tool_requests": 2,
+          "tool_retries": 1,
+          "tool_time_ms": 220.8
+        },
+        "id": 40,
+        "type": "run.completed"
+      }
+    ],
+    "next_after_id": null,
+    "run_id": "9916e01a12c549ef866697de73b67b7f"
+  }
+}

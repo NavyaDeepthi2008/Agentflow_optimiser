@@ -1,0 +1,213 @@
+{
+  "checksum": "40f4d5dbe8d05c24c2fe975130909af33d8647fdb516ee14e1598069a9b99926",
+  "description": "AgentFlow core evaluation set over the fictional Nimbus Labs mock tools. Expected answers and world checks are never shown to the agent.",
+  "name": "core",
+  "tasks": [
+    {
+      "allow_side_effects": false,
+      "category": "redundant",
+      "id": "redundant_orbit_price",
+      "scripted_only": false,
+      "split": "train",
+      "task": "How much does Orbit cost per user per month on the monthly plan? Answer in USD.",
+      "tools": [
+        "kb_search",
+        "doc_read"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "redundant",
+      "id": "redundant_refund_window",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "Within how many days of purchase can a customer get a full refund?",
+      "tools": [
+        "kb_search",
+        "doc_read"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "redundant",
+      "id": "redundant_support_hours",
+      "scripted_only": false,
+      "split": "train",
+      "task": "What are the standard support hours?",
+      "tools": [
+        "kb_search"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "redundant",
+      "id": "redundant_keystone_total",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "How much would 3 Keystone units cost in total, in USD?",
+      "tools": [
+        "doc_read",
+        "calculator"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "freshness",
+      "id": "freshness_price_changed",
+      "scripted_only": true,
+      "split": "train",
+      "task": "What is the current price of ORB-X? Check it, then check again a few minutes later and report the latest value.",
+      "tools": [
+        "price_lookup"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "freshness",
+      "id": "freshness_within_ttl",
+      "scripted_only": true,
+      "split": "heldout",
+      "task": "What is the current price of KST-X? Check it twice, half a minute apart.",
+      "tools": [
+        "price_lookup"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "freshness",
+      "id": "freshness_stale_unchanged",
+      "scripted_only": true,
+      "split": "train",
+      "task": "What is the current price of NMB-X? Check it, then check again two minutes later.",
+      "tools": [
+        "price_lookup"
+      ]
+    },
+    {
+      "allow_side_effects": true,
+      "category": "freshness",
+      "id": "freshness_read_after_write",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "Mark ticket REC-1001 as resolved, then confirm its current status by reading it again.",
+      "tools": [
+        "record_read",
+        "record_update"
+      ]
+    },
+    {
+      "allow_side_effects": true,
+      "category": "side_effect",
+      "id": "side_effect_double_reminder",
+      "scripted_only": false,
+      "split": "train",
+      "task": "Send the message 'Standup at 10' to team:orbit twice, as two separate notifications.",
+      "tools": [
+        "send_notification"
+      ]
+    },
+    {
+      "allow_side_effects": true,
+      "category": "side_effect",
+      "id": "side_effect_close_and_notify",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "Close ticket REC-1002 and notify team:keystone that it was closed.",
+      "tools": [
+        "record_update",
+        "send_notification"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "side_effect",
+      "id": "side_effect_not_permitted",
+      "scripted_only": false,
+      "split": "train",
+      "task": "Notify team:billing that the refund policy wording changed.",
+      "tools": [
+        "send_notification"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "failure",
+      "id": "failure_missing_document",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "Read knowledge-base document kb-099 and summarize it.",
+      "tools": [
+        "doc_read"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "failure",
+      "id": "failure_transient_outage",
+      "scripted_only": false,
+      "split": "train",
+      "task": "What is the daily meal allowance during business travel?",
+      "tools": [
+        "kb_search",
+        "doc_read"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "failure",
+      "id": "failure_loop",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "Find the release date of Orbit 5.0.",
+      "tools": [
+        "kb_search"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "failure",
+      "id": "failure_bad_calculation",
+      "scripted_only": false,
+      "split": "train",
+      "task": "Compute 1 divided by 0.",
+      "tools": [
+        "calculator"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "control",
+      "id": "control_flight_class",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "Which class do employees book for flights shorter than 6 hours?",
+      "tools": [
+        "kb_search",
+        "doc_read"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "control",
+      "id": "control_annual_price",
+      "scripted_only": false,
+      "split": "train",
+      "task": "What is 29 multiplied by 12?",
+      "tools": [
+        "calculator"
+      ]
+    },
+    {
+      "allow_side_effects": false,
+      "category": "control",
+      "id": "control_record_status",
+      "scripted_only": false,
+      "split": "heldout",
+      "task": "What is the current status of ticket REC-1003?",
+      "tools": [
+        "record_read"
+      ]
+    }
+  ],
+  "version": "1"
+}
